@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wpBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a"/>
+      <stop offset="50%" stop-color="#0f1d36"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="wpBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#21759b"/>
+      <stop offset="100%" stop-color="#00a0d2"/>
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#wpBg)"/>
+
+  <!-- Subtle Grid -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <path d="M0 50 H800 M0 100 H800 M0 150 H800 M0 200 H800 M0 250 H800 M0 300 H800 M0 350 H800 M0 400 H800 M0 450 H800"/>
+    <path d="M50 0 V500 M100 0 V500 M150 0 V500 M200 0 V500 M250 0 V500 M300 0 V500 M350 0 V500 M400 0 V500 M450 0 V500 M500 0 V500 M550 0 V500 M600 0 V500 M650 0 V500 M700 0 V500 M750 0 V500"/>
+  </g>
+
+  <!-- Browser Window Mockup Frame -->
+  <g transform="translate(60, 40)">
+    <!-- Window Outer Shell -->
+    <rect width="680" height="420" rx="12" fill="#0c1222" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    
+    <!-- Titlebar -->
+    <rect width="680" height="42" rx="12" fill="#17223b"/>
+    <rect y="30" width="680" height="12" fill="#17223b"/>
+    <circle cx="25" cy="21" r="5" fill="#ef4444"/>
+    <circle cx="42" cy="21" r="5" fill="#eab308"/>
+    <circle cx="59" cy="21" r="5" fill="#22c55e"/>
+
+    <!-- URL Bar -->
+    <rect x="90" y="11" width="370" height="20" rx="10" fill="#0b101d"/>
+    <text x="110" y="25" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">https://corporate-hub.com (Custom WordPress CMS)</text>
+
+    <!-- Top WordPress Admin Bar Simulation inside Mockup -->
+    <rect x="0" y="42" width="680" height="28" fill="#1d2327"/>
+    <!-- WordPress Logo Icon inside Bar -->
+    <circle cx="25" cy="56" r="9" fill="#21759b"/>
+    <text x="20" y="60" fill="#ffffff" font-family="Georgia, serif" font-weight="bold" font-size="12">W</text>
+    <text x="42" y="60" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="10">Corporate Platform CMS &bull; Edit Page &bull; Gutenberg Blocks</text>
+    <rect x="585" y="48" width="80" height="16" rx="3" fill="#2271b1"/>
+    <text x="597" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="9" font-weight="600">Published</text>
+
+    <!-- Site Header Nav -->
+    <rect x="25" y="85" width="130" height="18" rx="4" fill="url(#accentCyan)"/>
+    <rect x="440" y="88" width="50" height="12" rx="3" fill="#334155"/>
+    <rect x="505" y="88" width="50" height="12" rx="3" fill="#334155"/>
+    <rect x="570" y="84" width="85" height="22" rx="11" fill="url(#wpBlue)"/>
+    <text x="587" y="99" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Contact Us</text>
+
+    <!-- Hero Banner Inside Window -->
+    <rect x="25" y="120" width="390" height="140" rx="8" fill="#131c33" stroke="#25355a" stroke-width="1"/>
+    <text x="45" y="155" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="18" font-weight="800">Enterprise Digital Solutions</text>
+    <text x="45" y="180" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Custom WordPress architecture with zero page-builder bloat</text>
+    <rect x="45" y="202" width="130" height="34" rx="6" fill="#00a0d2"/>
+    <text x="63" y="224" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Explore Services ➔</text>
+
+    <!-- Side Metric Box: Performance & SEO -->
+    <rect x="430" y="120" width="225" height="140" rx="8" fill="#131c33" stroke="#25355a" stroke-width="1"/>
+    <text x="450" y="148" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" font-weight="700">CORE WEB VITALS AUDIT</text>
+    <text x="450" y="185" fill="#10b981" font-family="system-ui, sans-serif" font-size="32" font-weight="900">98 / 100</text>
+    <text x="450" y="210" fill="#22c55e" font-family="system-ui, sans-serif" font-size="11">✓ &lt;0.8s First Contentful Paint</text>
+    <text x="450" y="230" fill="#22c55e" font-family="system-ui, sans-serif" font-size="11">✓ Yoast SEO Structured Schema</text>
+
+    <!-- Bottom Gutenberg Block Grid Simulation -->
+    <rect x="25" y="275" width="200" height="120" rx="8" fill="#131c33" stroke="#25355a" stroke-width="1"/>
+    <circle cx="55" cy="305" r="16" fill="#21759b" opacity="0.4"/>
+    <text x="47" y="311" fill="#38bdf8" font-size="16">⚡</text>
+    <text x="45" y="340" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Custom ACF Fields</text>
+    <text x="45" y="360" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Dynamic client content</text>
+    <text x="45" y="375" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">updates without coding</text>
+
+    <rect x="240" y="275" width="200" height="120" rx="8" fill="#131c33" stroke="#25355a" stroke-width="1"/>
+    <circle cx="270" cy="305" r="16" fill="#10b981" opacity="0.3"/>
+    <text x="262" y="311" fill="#34d399" font-size="16">🛡️</text>
+    <text x="260" y="340" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Security Hardening</text>
+    <text x="260" y="360" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SSL, 2FA, anti-spam</text>
+    <text x="260" y="375" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">&amp; automated backups</text>
+
+    <rect x="455" y="275" width="200" height="120" rx="8" fill="#131c33" stroke="#25355a" stroke-width="1"/>
+    <circle cx="485" cy="305" r="16" fill="#f59e0b" opacity="0.3"/>
+    <text x="477" y="311" fill="#fbbf24" font-size="16">📈</text>
+    <text x="475" y="340" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Lead Capture Flow</text>
+    <text x="475" y="360" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Form validation hooked</text>
+    <text x="475" y="375" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">directly into client CRM</text>
+  </g>
+</svg>

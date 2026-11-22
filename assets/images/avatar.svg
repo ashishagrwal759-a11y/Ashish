@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <linearGradient id="primaryGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+
+    <linearGradient id="tieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0a96d"/>
+      <stop offset="100%" stop-color="#c98a4b"/>
+    </linearGradient>
+
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Outer Glow -->
+  <circle cx="250" cy="250" r="210" fill="none" stroke="url(#primaryGlow)" stroke-width="3" opacity="0.4" filter="url(#glowFilter)"/>
+  <circle cx="250" cy="250" r="200" fill="url(#bgGrad)" stroke="url(#ringGrad)" stroke-width="4"/>
+
+  <!-- Tech Grid Background Pattern -->
+  <g opacity="0.12">
+    <line x1="100" y1="150" x2="400" y2="150" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="100" y1="250" x2="400" y2="250" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="100" y1="350" x2="400" y2="350" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="170" y1="100" x2="170" y2="400" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="250" y1="100" x2="250" y2="400" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="330" y1="100" x2="330" y2="400" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Subtle Glowing Orbs -->
+  <circle cx="160" cy="180" r="45" fill="#38bdf8" opacity="0.15" filter="url(#glowFilter)"/>
+  <circle cx="340" cy="200" r="55" fill="#818cf8" opacity="0.15" filter="url(#glowFilter)"/>
+
+  <!-- Character Group with Soft Shadow -->
+  <g filter="url(#softShadow)">
+    <!-- Professional Suit / Blazer -->
+    <path d="M120 450 C 130 365, 175 320, 210 305 L 250 345 L 290 305 C 325 320, 370 365, 380 450 Z" fill="url(#suitGrad)"/>
+    
+    <!-- White Collared Shirt -->
+    <path d="M210 305 L 250 345 L 290 305 L 275 270 L 225 270 Z" fill="url(#shirtGrad)"/>
+    <path d="M210 305 L 235 315 L 225 270 Z" fill="#e2e8f0"/>
+    <path d="M290 305 L 265 315 L 275 270 Z" fill="#cbd5e1"/>
+
+    <!-- Professional Modern Tie -->
+    <path d="M242 320 L 258 320 L 263 380 L 250 410 L 237 380 Z" fill="url(#tieGrad)"/>
+    <polygon points="240,312 260,312 256,325 244,325" fill="#1d4ed8"/>
+
+    <!-- Suit Lapels -->
+    <path d="M205 310 L 235 375 L 220 380 L 180 340 Z" fill="#334155"/>
+    <path d="M295 310 L 265 375 L 280 380 L 320 340 Z" fill="#1e293b"/>
+
+    <!-- Neck -->
+    <path d="M225 245 L 275 245 L 270 285 C 270 295, 230 295, 230 285 Z" fill="url(#skinGrad)"/>
+
+    <!-- Head / Face -->
+    <path d="M195 190 C 195 130, 305 130, 305 190 C 305 245, 280 268, 250 268 C 220 268, 195 245, 195 190 Z" fill="url(#skinGrad)"/>
+
+    <!-- Modern Haircut -->
+    <path d="M190 180 C 185 140, 205 110, 250 110 C 295 110, 315 135, 310 175 C 300 145, 285 130, 250 130 C 215 130, 200 155, 190 180 Z" fill="url(#hairGrad)"/>
+    <path d="M195 160 C 210 130, 245 125, 275 130 C 295 133, 305 145, 310 160 C 300 135, 280 120, 250 120 C 220 120, 200 135, 195 160 Z" fill="#0f172a"/>
+
+    <!-- Eyebrows -->
+    <path d="M210 175 Q 225 170 238 175" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M262 175 Q 275 170 290 175" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+    <!-- Friendly Eyes -->
+    <ellipse cx="225" cy="188" rx="5" ry="4" fill="#0f172a"/>
+    <ellipse cx="275" cy="188" rx="5" ry="4" fill="#0f172a"/>
+    <circle cx="226" cy="186" r="1.5" fill="#ffffff"/>
+    <circle cx="276" cy="186" r="1.5" fill="#ffffff"/>
+
+    <!-- Nose -->
+    <path d="M250 186 L 246 208 L 254 208" stroke="#a16207" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+    <!-- Warm Confident Smile -->
+    <path d="M234 226 Q 250 238 266 226" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Sleek Tech Glasses (Modern Developer Look) -->
+    <rect x="210" y="180" width="32" height="20" rx="5" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+    <rect x="258" y="180" width="32" height="20" rx="5" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+    <line x1="242" y1="188" x2="258" y2="188" stroke="#38bdf8" stroke-width="2.5"/>
+    <line x1="198" y1="185" x2="210" y2="185" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="290" y1="185" x2="302" y2="185" stroke="#38bdf8" stroke-width="2"/>
+    <!-- Glass Glint -->
+    <path d="M214 184 L 222 184" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    <path d="M262 184 L 270 184" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Floating Tech Badges (Web Dev + Sales) -->
+  <!-- Left Badge: Code / Web Dev -->
+  <g transform="translate(60, 220)" filter="url(#softShadow)">
+    <rect width="90" height="34" rx="17" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="18" cy="17" r="9" fill="#0284c7"/>
+    <path d="M15 14 L 12 17 L 15 20 M 21 14 L 24 17 L 21 20" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <text x="35" y="21" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Web Dev</text>
+  </g>
+
+  <!-- Right Badge: Growth / Sales -->
+  <g transform="translate(350, 220)" filter="url(#softShadow)">
+    <rect width="88" height="34" rx="17" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+    <circle cx="18" cy="17" r="9" fill="#6366f1"/>
+    <path d="M14 20 L 17 17 L 19 19 L 23 14 M 20 14 L 23 14 L 23 17" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <text x="34" y="21" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Sales Pro</text>
+  </g>
+
+  <!-- Bottom Online / Available Badge -->
+  <g transform="translate(170, 410)" filter="url(#softShadow)">
+    <rect width="160" height="32" rx="16" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <circle cx="22" cy="16" r="5" fill="#10b981"/>
+    <circle cx="22" cy="16" r="8" fill="#10b981" opacity="0.3">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="36" y="20" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Available For Hire</text>
+  </g>
+</svg>

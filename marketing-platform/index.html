@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdPulse 360 | Enterprise Digital Marketing &amp; Google Ads Platform</title>
+  
+  <!-- Meta & SEO -->
+  <meta name="description" content="Production-ready digital marketing command center with complete Google Ads campaign management, real-time ROI tracking, keyword quality score diagnostics, and API v16 integration." />
+  <meta name="keywords" content="Google Ads, Digital Marketing Platform, Campaign Manager, PPC, CPC, ROAS, Quality Score, Marketing Dashboard" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Chart.js CDN (with automatic pure-SVG fallback built-in) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+
+  <!-- Platform Stylesheets -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- =========================================================================
+         SIDEBAR NAVIGATION
+         ========================================================================= -->
+    <aside class="app-sidebar" id="app-sidebar">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-badge">
+          <div class="brand-icon">
+            <i class="fa-brands fa-google"></i>
+          </div>
+          <div class="brand-title-wrap">
+            <h2>AdPulse 360</h2>
+            <span>Google Ads Manager</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connected Account Switcher -->
+      <div class="account-selector-card">
+        <div class="account-selector-header">
+          <span class="account-name">Enterprise Account</span>
+          <span class="status-dot dot-active" title="Google Ads API v16 Online"></span>
+        </div>
+        <div class="account-cid" id="sidebar-account-cid">CID: 482-910-3821</div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        
+        <div class="nav-section-label">Performance &amp; ROI</div>
+        <a href="#overview" class="nav-item active" data-tab="overview">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Overview &amp; ROI</span>
+        </a>
+
+        <div class="nav-section-label">Google Ads Management</div>
+        <a href="#campaigns" class="nav-item" data-tab="campaigns">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Campaigns</span>
+          <span class="nav-badge-pill" id="nav-count-campaigns">5 Live</span>
+        </a>
+
+        <a href="#keywords" class="nav-item" data-tab="keywords">
+          <i class="fa-solid fa-key"></i>
+          <span>Keywords &amp; Quality</span>
+          <span class="nav-badge-pill">QS 8.4</span>
+        </a>
+
+        <a href="#ads" class="nav-item" data-tab="ads">
+          <i class="fa-solid fa-rectangle-ad"></i>
+          <span>Ads &amp; SERP Preview</span>
+        </a>
+
+        <a href="#audiences" class="nav-item" data-tab="audiences">
+          <i class="fa-solid fa-users-viewfinder"></i>
+          <span>Audience Targeting</span>
+        </a>
+
+        <div class="nav-section-label">Integrations &amp; Reports</div>
+        <a href="#google-api" class="nav-item" data-tab="google-api">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>Google Ads API v16</span>
+          <span class="status-dot dot-active" style="margin-left: auto;"></span>
+        </a>
+
+        <a href="#reports" class="nav-item" data-tab="reports">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>Reports &amp; AI Insights</span>
+        </a>
+
+        <div class="nav-section-label">Quick Links</div>
+        <a href="../index.html" class="nav-item" style="color: var(--accent-cyan);">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Portfolio</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="api-live-indicator">
+          <span class="status-dot dot-active"></span>
+          <span>Google Ads API: <strong>Connected</strong></span>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-sync-google-ads" style="width: 100%;">
+          <i class="fa-solid fa-arrows-rotate"></i> Sync Google Ads
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- =========================================================================
+         MAIN APPLICATION AREA
+         ========================================================================= -->
+    <div class="app-main">
+      
+      <!-- Top App Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="mobile-toggle-btn" id="mobile-sidebar-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-breadcrumb" id="topbar-breadcrumb">
+            Executive Overview &amp; ROI Dashboard
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Date Filter Selector -->
+          <div class="date-picker-wrap">
+            <select id="global-date-range" aria-label="Select Date Range">
+              <option value="Last 14 Days">Last 14 Days</option>
+              <option value="Last 7 Days">Last 7 Days</option>
+              <option value="Last 30 Days" selected>Last 30 Days</option>
+              <option value="This Month">This Month (Q4)</option>
+              <option value="All Time">All Time</option>
+            </select>
+          </div>
+
+          <!-- Quick Action: New Campaign Wizard Button -->
+          <button type="button" class="btn btn-primary btn-sm" onclick="CampaignManager.openWizard()">
+            <i class="fa-solid fa-plus"></i> New Campaign
+          </button>
+
+          <!-- Reset Factory Data -->
+          <button type="button" class="btn-icon" id="btn-reset-demo-data" title="Reset Factory Demo Data">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views Container -->
+      <main class="content-body">
+        
+        <!-- =====================================================================
+             VIEW 1: EXECUTIVE OVERVIEW & ROI DASHBOARD
+             ===================================================================== -->
+        <section class="view-pane active" id="view-overview">
+          
+          <!-- Top Row: 8 Core Performance KPIs -->
+          <div class="kpi-grid">
+            
+            <!-- 1. Total Ad Spend -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Total Ad Spend</span>
+                <div class="kpi-icon" style="background: rgba(0, 210, 255, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-receipt"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-total-spend">$15,830.80</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +12.4%</span>
+                <span style="color: var(--text-muted);">vs prior 30 days</span>
+              </div>
+            </div>
+
+            <!-- 2. Impressions -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Impressions</span>
+                <div class="kpi-icon" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;"><i class="fa-solid fa-eye"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-impressions">563,100</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +8.1%</span>
+                <span style="color: var(--text-muted);">ad visibility</span>
+              </div>
+            </div>
+
+            <!-- 3. Clicks -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Clicks (Traffic)</span>
+                <div class="kpi-icon" style="background: rgba(0, 210, 255, 0.15); color: #00d2ff;"><i class="fa-solid fa-mouse-pointer"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-clicks" style="color: #00d2ff;">18,980</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +14.6%</span>
+                <span style="color: var(--text-muted);">inbound intent</span>
+              </div>
+            </div>
+
+            <!-- 4. Click-Through Rate (CTR) -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Average CTR</span>
+                <div class="kpi-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);"><i class="fa-solid fa-percent"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-ctr">3.37%</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +0.45%</span>
+                <span style="color: var(--text-muted);">industry avg 2.8%</span>
+              </div>
+            </div>
+
+            <!-- 5. Average CPC -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Average CPC</span>
+                <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;"><i class="fa-solid fa-tags"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-cpc">$0.83</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-down"></i> -8.2%</span>
+                <span style="color: var(--text-muted);">cost efficiency</span>
+              </div>
+            </div>
+
+            <!-- 6. Conversions -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Conversions (Leads)</span>
+                <div class="kpi-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-bullseye"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-conversions" style="color: #a855f7;">604</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +19.2%</span>
+                <span style="color: var(--text-muted);">goal completions</span>
+              </div>
+            </div>
+
+            <!-- 7. Cost Per Acquisition (CPA) -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Cost / Conversion</span>
+                <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+              </div>
+              <div class="kpi-val font-mono" id="kpi-cost-per-conv">$26.21</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-arrow-trend-down"></i> -6.5%</span>
+                <span style="color: var(--text-muted);">target: $35.00</span>
+              </div>
+            </div>
+
+            <!-- 8. Return On Ad Spend (ROAS / ROI) -->
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">ROAS / ROI</span>
+                <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);"><i class="fa-solid fa-chart-pie"></i></div>
+              </div>
+              <div class="kpi-val font-mono text-emerald" id="kpi-roas">551.3%</div>
+              <div class="kpi-footer">
+                <span class="trend-up"><i class="fa-solid fa-circle-check"></i> 5.51x Return</span>
+                <span style="color: var(--text-muted);">Revenue: <strong id="kpi-conv-value" style="color: #f8fafc;">$87,280</strong></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Middle Row: Interactive Charts -->
+          <div class="charts-grid-main">
+            
+            <!-- Left Chart: Multi-Metric Performance Time-Series -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div>
+                  <h3 class="chart-card-title">Daily Ad Spend &amp; Conversion Trajectory</h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Live data stream synchronized with Google Ads SearchStream API</p>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="AnalyticsEngine.renderMainTimeSeries('spend', 'conversions')">
+                    Spend vs Conversions
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="AnalyticsEngine.renderMainTimeSeries('clicks', 'conversions')">
+                    Clicks vs Conversions
+                  </button>
+                </div>
+              </div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="main-performance-chart"></canvas>
+              </div>
+            </div>
+
+            <!-- Right Chart: Device Breakdown Doughnut -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-card-title">Device Attribution</h3>
+                <span class="nav-badge-pill">Mobile vs Desktop</span>
+              </div>
+              <div class="chart-canvas-wrapper" style="height: 250px;">
+                <canvas id="device-breakdown-chart"></canvas>
+              </div>
+              <div style="padding-top: 1rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-around; font-size: 0.8rem; color: var(--text-secondary); text-align: center;">
+                <div><strong style="color: #3b82f6;">Desktop</strong><br /><span class="font-mono">54%</span></div>
+                <div><strong style="color: #00d2ff;">Mobile</strong><br /><span class="font-mono">42%</span></div>
+                <div><strong style="color: #8b5cf6;">Tablet</strong><br /><span class="font-mono">4%</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Row: ROAS by Campaign Comparison -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <h3 class="chart-card-title">Campaign Return on Ad Spend (ROAS %) Benchmark</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Evaluates revenue generated per dollar spent across all active Google Ads campaigns</p>
+              </div>
+              <span class="rec-score-boost font-mono">Portfolio ROAS: 551.3%</span>
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 220px;">
+              <canvas id="campaign-roas-chart"></canvas>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 2: GOOGLE ADS CAMPAIGNS MANAGEMENT
+             ===================================================================== -->
+        <section class="view-pane" id="view-campaigns">
+          
+          <div class="data-card">
+            <div class="data-card-toolbar">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <h3 style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">Google Ads Campaigns</h3>
+                <span class="nav-badge-pill" style="font-size: 0.75rem;">Real-Time Status &amp; Bidding</span>
+              </div>
+
+              <div class="toolbar-controls">
+                <div class="search-input-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="campaign-search-input" placeholder="Search campaign name or type..." />
+                </div>
+
+                <select id="campaign-status-filter" class="select-filter">
+                  <option value="all">All Statuses</option>
+                  <option value="Active">Active Only</option>
+                  <option value="Paused">Paused Only</option>
+                </select>
+
+                <button type="button" class="btn btn-primary btn-sm" onclick="CampaignManager.openWizard()">
+                  <i class="fa-solid fa-plus"></i> Create Campaign
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Campaign &amp; Strategy</th>
+                    <th>Daily Budget</th>
+                    <th>Impr.</th>
+                    <th>Clicks</th>
+                    <th>CTR</th>
+                    <th>Avg CPC</th>
+                    <th>Total Spend</th>
+                    <th>Conv.</th>
+                    <th>Cost/Conv</th>
+                    <th>ROAS</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="campaigns-table-body">
+                  <!-- Injected via CampaignManager -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 3: KEYWORDS & QUALITY SCORES
+             ===================================================================== -->
+        <section class="view-pane" id="view-keywords">
+          
+          <div class="data-card">
+            <div class="data-card-toolbar">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <h3 style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">Keywords &amp; Quality Scores</h3>
+                <span class="nav-badge-pill">Match Types &amp; Bids</span>
+              </div>
+
+              <div class="toolbar-controls">
+                <div class="search-input-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="keyword-search-input" placeholder="Search keyword text..." />
+                </div>
+
+                <select id="keyword-match-filter" class="select-filter">
+                  <option value="all">All Match Types</option>
+                  <option value="Exact">Exact Match [kw]</option>
+                  <option value="Phrase">Phrase Match "kw"</option>
+                  <option value="Broad">Broad Match</option>
+                  <option value="Negative">Negative -kw</option>
+                </select>
+
+                <button type="button" class="btn btn-primary btn-sm" onclick="KeywordManager.openAddModal()">
+                  <i class="fa-solid fa-plus"></i> Add Keyword
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Keyword Term</th>
+                    <th>Match Type</th>
+                    <th>Status</th>
+                    <th>Quality Score</th>
+                    <th>Max CPC</th>
+                    <th>Impr.</th>
+                    <th>Clicks</th>
+                    <th>CTR</th>
+                    <th>Spend</th>
+                    <th>Conv.</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="keywords-table-body">
+                  <!-- Injected via KeywordManager -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 4: RESPONSIVE SEARCH ADS & GOOGLE SERP PREVIEW
+             ===================================================================== -->
+        <section class="view-pane" id="view-ads">
+          
+          <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem;">
+            
+            <!-- Left Column: Ad Creation Form -->
+            <div class="data-card" style="padding: 1.8rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-light);">
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff;">Responsive Search Ad Creator</h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Craft multiple headlines and descriptions for Google's machine learning ad rotation</p>
+                </div>
+              </div>
+
+              <form id="create-ad-form">
+                
+                <div class="form-group">
+                  <label class="form-label" for="ad-select-campaign">Assign to Campaign</label>
+                  <select id="ad-select-campaign" class="form-control campaign-dropdown-selector">
+                    <!-- Dynamic -->
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="ad-final-url">Final URL *</label>
+                  <input type="url" id="ad-final-url" class="form-control font-mono" value="https://adpulse360.com/enterprise-solutions" required />
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="ad-display-path1">Display Path 1</label>
+                    <input type="text" id="ad-display-path1" class="form-control" maxlength="15" value="Solutions" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ad-display-path2">Display Path 2</label>
+                    <input type="text" id="ad-display-path2" class="form-control" maxlength="15" value="Enterprise" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Headlines (Up to 30 chars each)</label>
+                  <input type="text" id="ad-headline-1" class="form-control" maxlength="30" value="Enterprise Web Development" style="margin-bottom: 0.5rem;" required />
+                  <input type="text" id="ad-headline-2" class="form-control" maxlength="30" value="High-Converting Solutions" style="margin-bottom: 0.5rem;" required />
+                  <input type="text" id="ad-headline-3" class="form-control" maxlength="30" value="Scale Your Digital Revenue" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Descriptions (Up to 90 chars each)</label>
+                  <textarea id="ad-desc-1" class="form-control" maxlength="90" style="margin-bottom: 0.5rem;" required>Transform your digital revenue with custom, high-speed architectures and managed growth.</textarea>
+                  <textarea id="ad-desc-2" class="form-control" maxlength="90">Partner with verified technical developers and sales specialists. Schedule a call today.</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Push to Google Ads
+                </button>
+              </form>
+            </div>
+
+            <!-- Right Column: Real-Time Google SERP Simulator -->
+            <div>
+              
+              <!-- Ad Strength Indicator -->
+              <div class="ad-strength-card">
+                <div class="ad-strength-header">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Google Ad Strength:</span>
+                  <span id="ad-strength-label" class="font-mono font-bold" style="color: #10b981;">Excellent (94%)</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" id="ad-strength-meter-bar" style="width: 94%; background: #10b981;"></div>
+                </div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem;">
+                  ✓ Unique headlines present &bull; ✓ Popular keyword inclusion &bull; ✓ Length verified
+                </div>
+              </div>
+
+              <!-- Real Google SERP Preview Card -->
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                  Live Google Search SERP Preview
+                </h4>
+                
+                <div class="serp-preview-box">
+                  <div class="serp-header">
+                    <div class="serp-favicon"><i class="fa-solid fa-globe"></i></div>
+                    <div class="serp-domain-wrap">
+                      <div class="serp-advertiser">AdPulse 360 Inc.</div>
+                      <div class="serp-url-path">
+                        <span class="serp-sponsored-tag">Sponsored</span>
+                        <span id="serp-preview-url">adpulse360.com > Solutions > Enterprise</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 class="serp-headline-title" id="serp-preview-title">
+                    Enterprise Web Development | High-Converting Solutions | Scale Your Digital Revenue
+                  </h3>
+
+                  <p class="serp-description-body" id="serp-preview-desc">
+                    Transform your digital revenue with custom, high-speed architectures and managed growth. Partner with verified technical developers and sales specialists. Schedule a call today.
+                  </p>
+
+                  <div class="serp-sitelinks-grid">
+                    <div class="serp-sitelink-item">
+                      <a href="#demo">View Case Studies ➔</a>
+                    </div>
+                    <div class="serp-sitelink-item">
+                      <a href="#demo">Schedule Discovery Call ➔</a>
+                    </div>
+                    <div class="serp-sitelink-item">
+                      <a href="#demo">WordPress Redesigns ➔</a>
+                    </div>
+                    <div class="serp-sitelink-item">
+                      <a href="#demo">B2B Shopify Stores ➔</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Existing Ads Quick List -->
+              <div class="data-card" style="padding: 1.2rem;">
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                  Active Ads in Account
+                </h4>
+                <div id="existing-ads-list">
+                  <!-- Dynamic from Storage -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 5: AUDIENCE SEGMENTS & DEMOGRAPHICS
+             ===================================================================== -->
+        <section class="view-pane" id="view-audiences">
+          
+          <div class="data-card" style="margin-bottom: 2rem;">
+            <div class="data-card-toolbar">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">Audience Segments &amp; In-Market Lists</h3>
+              <button type="button" class="btn btn-primary btn-sm" onclick="App.showToast('Audience list manager synced with Google Ads API')">
+                <i class="fa-solid fa-users"></i> Add Audience Segment
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Audience Segment Name</th>
+                    <th>Type</th>
+                    <th>Bid Modifier</th>
+                    <th>Impr.</th>
+                    <th>Clicks</th>
+                    <th>Conv.</th>
+                    <th>Conv. Rate</th>
+                    <th>ROAS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>In-Market: Enterprise Web Design &amp; Development</strong></td>
+                    <td><span class="type-pill type-search">In-Market</span></td>
+                    <td class="font-mono" style="color: var(--accent-emerald); font-weight: 700;">+25%</td>
+                    <td class="font-mono">19,800</td>
+                    <td class="font-mono">1,640</td>
+                    <td class="font-mono" style="color: #a855f7; font-weight: 700;">84</td>
+                    <td class="font-mono">5.12%</td>
+                    <td class="font-mono text-emerald">520%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Website Visitors (Past 30 Days) - Non-Converters</strong></td>
+                    <td><span class="type-pill type-performance-max">Remarketing</span></td>
+                    <td class="font-mono" style="color: var(--accent-emerald); font-weight: 700;">+35%</td>
+                    <td class="font-mono">28,400</td>
+                    <td class="font-mono">2,190</td>
+                    <td class="font-mono" style="color: #a855f7; font-weight: 700;">112</td>
+                    <td class="font-mono">5.11%</td>
+                    <td class="font-mono text-emerald">640%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>In-Market: E-Commerce Platform Software (Shopify / B2B)</strong></td>
+                    <td><span class="type-pill type-search">In-Market</span></td>
+                    <td class="font-mono" style="color: var(--accent-emerald); font-weight: 700;">+20%</td>
+                    <td class="font-mono">14,200</td>
+                    <td class="font-mono">980</td>
+                    <td class="font-mono" style="color: #a855f7; font-weight: 700;">46</td>
+                    <td class="font-mono">4.69%</td>
+                    <td class="font-mono text-emerald">480%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Affinity: Technology Business Leaders &amp; Founders</strong></td>
+                    <td><span class="type-pill type-display">Affinity</span></td>
+                    <td class="font-mono" style="color: var(--accent-cyan); font-weight: 700;">+15%</td>
+                    <td class="font-mono">34,000</td>
+                    <td class="font-mono">1,820</td>
+                    <td class="font-mono" style="color: #a855f7; font-weight: 700;">58</td>
+                    <td class="font-mono">3.19%</td>
+                    <td class="font-mono text-emerald">410%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Demographic Bid Adjustments Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            
+            <div class="data-card" style="padding: 1.5rem;">
+              <h4 style="font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem;">
+                <i class="fa-solid fa-cake-candles" style="color: var(--accent-cyan);"></i> Age Demographics &amp; Bids
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>25 – 34 Years (Founders &amp; Tech Leads)</span>
+                  <span class="font-mono text-emerald font-bold">+20% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>35 – 44 Years (Executive Decision Makers)</span>
+                  <span class="font-mono text-emerald font-bold">+30% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>45 – 54 Years (C-Level &amp; Directors)</span>
+                  <span class="font-mono text-emerald font-bold">+25% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0;">
+                  <span>18 – 24 Years (Students / Entry Level)</span>
+                  <span class="font-mono" style="color: #ef4444; font-weight: 700;">-40% Bid Adjustment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="data-card" style="padding: 1.5rem;">
+              <h4 style="font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem;">
+                <i class="fa-solid fa-money-bill-trend-up" style="color: #fbbf24;"></i> Household Income Targeting
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>Top 10% Household Income</span>
+                  <span class="font-mono text-emerald font-bold">+35% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>11% – 20% Household Income</span>
+                  <span class="font-mono text-emerald font-bold">+20% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">
+                  <span>21% – 30% Household Income</span>
+                  <span class="font-mono font-bold" style="color: var(--accent-cyan);">+10% Bid Adjustment</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0;">
+                  <span>Lower 50% Household Income</span>
+                  <span class="font-mono" style="color: #94a3b8;">0% (Base Bid)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 6: GOOGLE ADS API v16 INTEGRATION & SETTINGS
+             ===================================================================== -->
+        <section class="view-pane" id="view-google-api">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            
+            <!-- API Credentials Form -->
+            <div class="data-card" style="padding: 1.8rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-light);">
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff;">Google Ads API v16 Credentials</h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Connect to your Google Ads Developer Console &amp; MCC Account</p>
+                </div>
+                <div id="api-connection-badge">
+                  <!-- Injected via GoogleAdsApiConnector -->
+                </div>
+              </div>
+
+              <form id="api-credentials-form">
+                
+                <div class="form-group">
+                  <label class="form-label" for="api-customer-id">Customer ID (CID) *</label>
+                  <input type="text" id="api-customer-id" class="form-control font-mono" placeholder="e.g. 482-910-3821" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="api-dev-token">Developer Token *</label>
+                  <input type="text" id="api-dev-token" class="form-control font-mono" placeholder="Developer Token from Google" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="api-client-id">OAuth 2.0 Client ID</label>
+                  <input type="text" id="api-client-id" class="form-control font-mono" placeholder="xxxx.apps.googleusercontent.com" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="api-env-mode">Environment Mode</label>
+                  <select id="api-env-mode" class="form-control">
+                    <option value="Production (Google Ads API v16)">Production API Account</option>
+                    <option value="Sandbox / Test Account">Google Ads Test Account (Sandbox)</option>
+                  </select>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                  <button type="submit" class="btn btn-primary" style="flex: 1;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save API Credentials
+                  </button>
+                  <button type="button" class="btn btn-secondary" onclick="GoogleAdsApiConnector.triggerApiSync()">
+                    <i class="fa-solid fa-bolt"></i> Test Sync
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- API Status & Live Inspector Details -->
+            <div class="data-card" style="padding: 1.8rem; display: flex; flex-direction: column;">
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 0.4rem;">
+                API Connection Status &amp; Diagnostics
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                Endpoint: <code>https://googleads.googleapis.com/v16/customers/{customerId}/</code>
+              </p>
+
+              <div style="background: rgba(11, 17, 33, 0.7); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.2rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.86rem;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">Active Customer ID:</span>
+                  <span class="font-mono font-bold" id="api-display-cid" style="color: var(--accent-cyan);">482-910-3821</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">Active API Protocol:</span>
+                  <span class="font-mono" id="api-display-mode">Production (Google Ads API v16)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">Last Successful Sync:</span>
+                  <span class="font-mono text-emerald" id="api-last-sync-time">Just now</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">OAuth2 Refresh Token:</span>
+                  <span class="font-mono text-emerald">Valid &bull; Auto-Refreshes</span>
+                </div>
+              </div>
+
+              <div style="margin-top: auto; display: flex; gap: 0.8rem;">
+                <button type="button" class="btn btn-secondary btn-sm" style="flex: 1;" onclick="GoogleAdsApiConnector.openPayloadViewer()">
+                  <i class="fa-solid fa-code"></i> Inspect JSON Payload
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" style="flex: 1;" onclick="App.showToast('OAuth2 token re-authorized.')">
+                  <i class="fa-solid fa-key"></i> Re-authorize Token
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Real-Time API Event & Webhook Audit Log -->
+          <div class="data-card" style="padding: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <h4 style="font-size: 1rem; font-weight: 700; color: #ffffff;">
+                <i class="fa-solid fa-list-check" style="color: var(--accent-cyan);"></i> Live API Audit Logs &amp; Webhook Events
+              </h4>
+              <button type="button" class="btn-icon" onclick="GoogleAdsApiConnector.renderApiLogs()" title="Refresh Logs">
+                <i class="fa-solid fa-rotate"></i>
+              </button>
+            </div>
+            <div id="api-audit-log-list">
+              <!-- Dynamic from GoogleAdsApiConnector -->
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             VIEW 7: REPORTS, ROI & AI OPTIMIZATIONS
+             ===================================================================== -->
+        <section class="view-pane" id="view-reports">
+          
+          <!-- Top Row: Export Buttons -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff;">Executive Performance Reports</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Download clean CSV spreadsheets or generate presentation-ready client executive summaries</p>
+            </div>
+
+            <div style="display: flex; gap: 0.8rem;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-export-campaigns-csv">
+                <i class="fa-solid fa-file-csv"></i> Export Campaigns (CSV)
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-export-keywords-csv">
+                <i class="fa-solid fa-file-csv"></i> Export Keywords (CSV)
+              </button>
+              <button type="button" class="btn btn-primary btn-sm" id="btn-print-report">
+                <i class="fa-solid fa-print"></i> Print Executive Summary
+              </button>
+            </div>
+          </div>
+
+          <!-- ROI Profit Calculator Box -->
+          <div class="data-card" style="padding: 1.8rem; margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem;">
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: #ffffff;">
+                <i class="fa-solid fa-calculator" style="color: var(--accent-emerald);"></i> Net ROI &amp; Revenue Attribution Formula
+              </h4>
+              <span class="nav-badge-pill">Calculated from Real Conversions</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+              <div style="padding: 1rem; background: rgba(11, 17, 33, 0.7); border-radius: var(--radius-md);">
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Gross Conv. Value</span>
+                <div class="font-mono font-bold" style="font-size: 1.5rem; color: #f8fafc; margin-top: 0.4rem;">$87,280.00</div>
+              </div>
+
+              <div style="padding: 1rem; background: rgba(11, 17, 33, 0.7); border-radius: var(--radius-md);">
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Total Ad Spend</span>
+                <div class="font-mono font-bold" style="font-size: 1.5rem; color: #ef4444; margin-top: 0.4rem;">-$15,830.80</div>
+              </div>
+
+              <div style="padding: 1rem; background: rgba(11, 17, 33, 0.7); border-radius: var(--radius-md); border: 1px solid rgba(16, 185, 129, 0.3);">
+                <span style="font-size: 0.78rem; color: var(--accent-emerald); text-transform: uppercase;">Net Ad Profit</span>
+                <div class="font-mono font-bold text-emerald" style="font-size: 1.5rem; margin-top: 0.4rem;">+$71,449.20</div>
+              </div>
+
+              <div style="padding: 1rem; background: rgba(11, 17, 33, 0.7); border-radius: var(--radius-md); border: 1px solid rgba(0, 210, 255, 0.3);">
+                <span style="font-size: 0.78rem; color: var(--accent-cyan); text-transform: uppercase;">Portfolio ROAS</span>
+                <div class="font-mono font-bold" style="font-size: 1.5rem; color: var(--accent-cyan); margin-top: 0.4rem;">551.3% (5.5x)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Optimization Recommendations -->
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem;">
+              <h4 style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-cyan);"></i> Google Ads AI Recommendations (3 Available)
+              </h4>
+              <span class="font-mono" style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 700;">Account Optimization Score: 92.4%</span>
+            </div>
+
+            <div id="ai-recommendations-list">
+              <!-- Injected dynamically via ReportEngine -->
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+
+  <!-- 1. Campaign Creation Wizard Modal -->
+  <div class="modal-overlay" id="campaign-wizard-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-brands fa-google" style="color: var(--accent-cyan);"></i> Create New Google Ads Campaign
+        </h3>
+        <button type="button" class="modal-close-btn" onclick="CampaignManager.closeWizard()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="new-campaign-form">
+        <div class="form-group">
+          <label class="form-label" for="wiz-camp-name">Campaign Name *</label>
+          <input type="text" id="wiz-camp-name" class="form-control" placeholder="e.g. US - Search - B2B Solutions Q1" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="wiz-camp-type">Campaign Type</label>
+            <select id="wiz-camp-type" class="form-control">
+              <option value="Search">Search (High Intent Text Ads)</option>
+              <option value="Performance Max">Performance Max (All Channels)</option>
+              <option value="Display">Display Network &amp; Remarketing</option>
+              <option value="Shopping">Shopping &amp; Product Feeds</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wiz-camp-objective">Primary Marketing Objective</label>
+            <select id="wiz-camp-objective" class="form-control">
+              <option value="Leads">Leads &amp; Inbound Inquiries</option>
+              <option value="Sales">Sales &amp; E-Commerce Orders</option>
+              <option value="Website Traffic">Qualified Website Traffic</option>
+              <option value="Brand Awareness">Brand Awareness &amp; Reach</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="wiz-camp-budget">Daily Budget ($/day) *</label>
+            <input type="number" id="wiz-camp-budget" class="form-control font-mono" min="5" step="5" value="120" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wiz-camp-bidding">Bidding Strategy</label>
+            <select id="wiz-camp-bidding" class="form-control">
+              <option value="Maximize Conversions">Maximize Conversions</option>
+              <option value="Target CPA ($38.00)">Target CPA (Smart Bidding)</option>
+              <option value="Target ROAS (450%)">Target ROAS</option>
+              <option value="Maximize Clicks">Maximize Clicks</option>
+              <option value="Manual CPC">Manual CPC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wiz-camp-target-cpa">Target CPA ($ Optional)</label>
+          <input type="number" id="wiz-camp-target-cpa" class="form-control font-mono" placeholder="e.g. 38.00" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wiz-camp-locations">Geographic Targeting (Comma-separated)</label>
+          <input type="text" id="wiz-camp-locations" class="form-control" value="United States, Canada" />
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+          <button type="button" class="btn btn-secondary" onclick="CampaignManager.closeWizard()">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> Launch &amp; Push to Google Ads
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Add Keyword Modal -->
+  <div class="modal-overlay" id="add-keyword-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-key" style="color: var(--accent-cyan);"></i> Add Keyword or Negative Term
+        </h3>
+        <button type="button" class="modal-close-btn" onclick="KeywordManager.closeAddModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="add-keyword-form">
+        <div class="form-group">
+          <label class="form-label" for="new-kw-campaign">Target Campaign</label>
+          <select id="new-kw-campaign" class="form-control campaign-dropdown-selector">
+            <!-- Dynamic -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-kw-text">Keyword Term *</label>
+          <input type="text" id="new-kw-text" class="form-control font-mono" placeholder="e.g. b2b marketing software" required />
+          <span style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;">
+            Tip: Exact match uses [brackets], phrase match uses "quotes", negative uses -minus.
+          </span>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="new-kw-match-type">Match Type</label>
+            <select id="new-kw-match-type" class="form-control">
+              <option value="Exact">Exact Match [term]</option>
+              <option value="Phrase">Phrase Match "term"</option>
+              <option value="Broad">Broad Match term</option>
+              <option value="Negative">Negative Keyword -term</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-kw-cpc">Max CPC Bid ($)</label>
+            <input type="number" id="new-kw-cpc" class="form-control font-mono" step="0.10" value="2.20" />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+          <button type="button" class="btn btn-secondary" onclick="KeywordManager.closeAddModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Add to Campaign
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Google Ads API Payload Inspector Modal -->
+  <div class="modal-overlay" id="api-payload-modal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="max-width: 780px;">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-terminal" style="color: var(--accent-cyan);"></i> Google Ads API v16 Payload Inspector
+        </h3>
+        <button type="button" class="modal-close-btn" onclick="GoogleAdsApiConnector.closePayloadViewer()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.8rem;">
+        Live REST/gRPC query and response structure communicated between AdPulse 360 and Google Ads API:
+      </p>
+
+      <pre id="api-payload-code" class="font-mono" style="background: #060913; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.2rem; max-height: 420px; overflow-y: auto; font-size: 0.78rem; color: #38bdf8;"></pre>
+
+      <div style="display: flex; justify-content: flex-end; margin-top: 1.2rem;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="GoogleAdsApiConnector.closePayloadViewer()">
+          Close Inspector
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div class="toast-container" id="app-toast-container"></div>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/campaigns.js"></script>
+  <script src="js/keywords.js"></script>
+  <script src="js/adbuilder.js"></script>
+  <script src="js/google-ads-api.js"></script>
+  <script src="js/reports.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
