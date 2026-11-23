@@ -33,27 +33,25 @@ A modern, premium, fully responsive, and interactive personal portfolio website 
 ## 📁 Project Structure
 
 ```
-d:\ashish portfolio\
-├── index.html                  # Semantic HTML5, SEO meta tags, OpenGraph, JSON-LD schema
-├── README.md                   # Full documentation & setup guide
+portfolio/
+├── index.html                 # Portfolio page
 ├── css/
-│   └── style.css               # Modern CSS3 design system, responsive grid & animations
+│   └── style.css              # Site styles
 ├── js/
-│   ├── config.js               # Centralized data file (Edit details, skills, projects here!)
-│   ├── particles.js            # Interactive starry canvas constellation background
-│   └── main.js                 # Smooth scroll, nav drawer, scrollspy, modal, form validation
-└── assets/
-    ├── docs/
-    │   └── README_RESUME.txt   # Guide for placing Ashish_Agrawal_Resume.pdf
-    └── images/
-        ├── logo.png            # 3D Gold & Silver Monogram "AA" Official Brand Logo
-        ├── avatar.svg          # Professional web developer & sales pro vector avatar
-        ├── favicon.svg         # Monogram AA high-res icon
-        ├── project-gogold.svg  # GoGold USA (gogoldusa.com) Full Custom WordPress Redesign mockup
-        ├── project-2.svg       # Shopify High-Converting Fashion Store mockup
-        ├── project-3.svg       # High-Converting Sales Landing Page & Lead Funnel mockup
-        ├── project-4.svg       # Shopify B2B Wholesale & Multi-Tier Store mockup
-        └── project-5.svg       # Custom WordPress Real Estate & Booking Portal mockup
+│   ├── config.js              # Portfolio content and links
+│   ├── main.js                # Interactions and contact form
+│   └── particles.js           # Animated background
+├── assets/
+│   ├── docs/                  # Resume instructions and documents
+│   └── images/                # Profile, logo, favicon, and project artwork
+├── server.js                  # Express API and email delivery
+├── setup-smtp.html            # Local SMTP setup utility
+├── test-email.js              # Email workflow test script
+├── package.json               # Scripts and runtime dependencies
+├── package-lock.json          # Locked dependency versions
+├── .env.example               # SMTP configuration template
+├── start-server.bat           # Windows server launcher
+└── README.md                  # Setup, configuration, and deployment guide
 ```
 
 ---
