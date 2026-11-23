@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ashishagrwal759-a11y/AshishAgrwal#readme",
   "dependencies": {
+    "@vercel/speed-insights": "^2.1.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
