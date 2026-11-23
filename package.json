@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashishagrwal759-a11y/AshishAgrwal.git"
+    "url": "git+https://github.com/ashishagrwal759-a11y/Ashish-Agrwal.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/ashishagrwal759-a11y/AshishAgrwal/issues"
+    "url": "https://github.com/ashishagrwal759-a11y/Ashish-Agrwal/issues"
   },
-  "homepage": "https://github.com/ashishagrwal759-a11y/AshishAgrwal#readme",
+  "homepage": "https://github.com/ashishagrwal759-a11y/Ashish-Agrwal#readme",
   "dependencies": {
     "@vercel/speed-insights": "^2.1.0",
     "cors": "^2.8.6",
