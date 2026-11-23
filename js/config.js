@@ -6,9 +6,16 @@
  */
 
 const PORTFOLIO_CONFIG = {
+  // Contact Form & Backend API Configuration
+  // Leave empty ("") to auto-detect the local Node.js server (http://localhost:3000/api/inquiries or /api/inquiries)
+  // Or provide an absolute URL when deploying to a remote host (e.g. "https://your-domain.com/api/inquiries")
+  apiUrl: "",
+
   personal: {
     fullName: "Ashish Agrawal",
     email: "ashishagrwal307@gmail.com",
+    phone: "+91 9928903550",
+    phoneRaw: "9928903550",
     roles: [
       "Web Developer",
       "Sales Executive",
@@ -28,8 +35,8 @@ const PORTFOLIO_CONFIG = {
   socials: {
     linkedin: {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/ashish-agrawal-placeholder",
-      isPlaceholder: true,
+      url: "https://www.linkedin.com/in/ashishagrwal7014",
+      isPlaceholder: false,
       label: "Connect on LinkedIn"
     },
     github: {
@@ -40,11 +47,12 @@ const PORTFOLIO_CONFIG = {
     },
     whatsapp: {
       name: "WhatsApp",
-      url: "https://wa.me/?text=Hello%20Ashish,%20I%20saw%20your%20portfolio",
+      url: "https://wa.me/919928903550?text=Hello%20Ashish,%20I%20saw%20your%20portfolio",
       isPlaceholder: false,
-      label: "Chat on WhatsApp"
+      label: "Chat on WhatsApp (+91 9928903550)"
     },
-    emailDirect: "mailto:ashishagrwal307@gmail.com"
+    phoneDirect: "tel:+919928903550",
+    emailDirect: "https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com"
   },
 
   // Verified Skills - Only skills Ashish knows as requested

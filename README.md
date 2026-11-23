@@ -90,15 +90,71 @@ Open `js/config.js` and modify the values in `PORTFOLIO_CONFIG`:
    ```
 4. The **"Resume"** and **"Download PDF Resume"** buttons on the site will automatically download your PDF!
 
-### 3. Contact Form Backend Integration (Optional)
-The contact form currently validates inputs and opens the user's default email client pre-filled to send directly to `ashishagrwal307@gmail.com`.
+### 3. Automated Contact Form & Dual Email Delivery
+The contact form features end-to-end background submission without opening Outlook or any desktop mail application:
+- **Admin Notification**: Form details are captured and instantly delivered to `ashishagrwal307@gmail.com` with a styled executive report, client details, and direct `replyTo` capability.
+- **Client Confirmation**: The submitting client automatically receives a personalized HTML confirmation receipt ("Inquiry Received") confirming their details and setting expectations for a response within 2–4 business hours.
+- **Persistent Lead Storage**: All inquiries are permanently stored in `db/inquiries.json` with timestamp, client metadata, and delivery status.
+- **Universal Provider Compatibility**: Works seamlessly with Gmail, Outlook, Yahoo, SendGrid, Brevo, or any custom SMTP server.
+- **Zero-Setup Testing Mode**: If live SMTP credentials are not yet entered in `.env`, the server automatically creates an Ethereal test inbox and prints email preview URLs directly to the console!
 
-If you prefer direct background submission without opening an email client:
-1. Register for free at [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com).
-2. Set your Formspree endpoint in `index.html`:
-   ```html
-   <form id="portfolio-contact-form" action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST">
-   ```
+#### Starting the Email Backend Server:
+Choose any of these easy ways to run the server:
+
+- **Option A (Direct Node - Recommended)**:
+  ```bash
+  node server.js
+  ```
+- **Option B (Windows CMD / Bypass PowerShell Restriction)**:
+  ```bash
+  npm.cmd start
+  ```
+- **Option C (One-Click)**:
+  Double-click `start-server.bat` in the project folder.
+
+> **Tip for PowerShell Users:** If you see `PSSecurityException` when typing `npm`, run this once in PowerShell:
+> ```powershell
+> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+> ```
+
+The server will boot on `http://localhost:3000`. Inquiries submitted from the frontend will be processed automatically!
+
+#### Running the Automated Test Suite:
+```bash
+npm test
+```
+This tests server health, input validation, dual email generation (admin + client confirmation), and lead database persistence.
+
+#### Configuring Live SMTP Credentials (.env):
+Open `.env` to configure your email provider:
+
+- **Gmail (Recommended)**:
+  ```env
+  SMTP_HOST=smtp.gmail.com
+  SMTP_PORT=587
+  SMTP_SECURE=false
+  SMTP_USER=ashishagrwal307@gmail.com
+  SMTP_PASS=your_16_char_google_app_password
+  NOTIFICATION_RECIPIENT=ashishagrwal307@gmail.com
+  ```
+  *(To generate a 16-character App Password, visit: https://myaccount.google.com/apppasswords with 2FA enabled)*
+
+- **Outlook / Office 365**:
+  ```env
+  SMTP_HOST=smtp.office365.com
+  SMTP_PORT=587
+  SMTP_SECURE=false
+  SMTP_USER=your_email@outlook.com
+  SMTP_PASS=your_password
+  ```
+
+- **Yahoo Mail / Custom SMTP**:
+  ```env
+  SMTP_HOST=smtp.mail.yahoo.com
+  SMTP_PORT=587
+  SMTP_USER=your_email@yahoo.com
+  SMTP_PASS=your_yahoo_app_password
+  ```
 
 ---
 
@@ -110,8 +166,8 @@ You can host this website online for free with your own custom domain or free su
   1. Create a repository on GitHub (e.g., `ashish-portfolio`).
   2. Push these files to the repository.
   3. Go to **Settings > Pages > Branch: main / root** and click Save.
-- **Vercel / Netlify**:
-  - Drag and drop this folder directly into the Netlify or Vercel dashboard. It will deploy within 10 seconds!
+- **Vercel / Netlify / Render**:
+  - Drag and drop this folder directly into the Netlify, Vercel, or Render dashboard. It will deploy within 10 seconds!
 
 ---
 
