@@ -315,21 +315,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 9. In-Platform Direct Email Modal Logic ---
   const emailModal = document.getElementById('email-modal');
-  const emailModalSubject = document.getElementById('email-modal-subject');
-  const emailModalBody = document.getElementById('email-modal-body');
+  let currentPrefillSubject = '';
+  let currentPrefillBody = '';
 
   window.openEmailModal = function (e, prefillSubject = '', prefillBody = '') {
     if (e && e.preventDefault) e.preventDefault();
+    currentPrefillSubject = prefillSubject;
+    currentPrefillBody = prefillBody;
     if (emailModal) {
-      if (emailModalSubject) emailModalSubject.value = prefillSubject;
-      if (emailModalBody) emailModalBody.value = prefillBody;
       emailModal.classList.add('active');
       document.body.style.overflow = 'hidden';
-      setTimeout(() => {
-        if (emailModalSubject && !prefillSubject) {
-          emailModalSubject.focus();
-        }
-      }, 150);
     }
   };
 
@@ -342,8 +337,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.launchWebmail = function (provider) {
     const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
-    const subject = emailModalSubject ? emailModalSubject.value.trim() : '';
-    const body = emailModalBody ? emailModalBody.value.trim() : '';
+    const subject = currentPrefillSubject ? currentPrefillSubject.trim() : '';
+    const body = currentPrefillBody ? currentPrefillBody.trim() : '';
 
     let url = '';
     if (provider === 'gmail') {
@@ -366,13 +361,11 @@ document.addEventListener('DOMContentLoaded', function () {
   window.launchDesktopMail = function (e) {
     if (e && e.preventDefault) e.preventDefault();
     const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
-    const subject = emailModalSubject ? emailModalSubject.value.trim() : '';
-    const body = emailModalBody ? emailModalBody.value.trim() : '';
     let mailto = `mailto:${email}`;
-    const params = [];
-    if (subject) params.push(`subject=${encodeURIComponent(subject)}`);
-    if (body) params.push(`body=${encodeURIComponent(body)}`);
-    if (params.length > 0) mailto += `?${params.join('&')}`;
+    if (currentPrefillSubject) {
+      mailto += `?subject=${encodeURIComponent(currentPrefillSubject)}`;
+      if (currentPrefillBody) mailto += `&body=${encodeURIComponent(currentPrefillBody)}`;
+    }
     window.location.href = mailto;
     closeEmailModal();
   };
