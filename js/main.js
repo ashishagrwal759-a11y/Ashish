@@ -304,33 +304,113 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 8. Service Inquiry Auto-Prefill ---
+  // --- 8. Service / Project Inquiry Quick Connect ---
   window.prefillInquiry = function (serviceTitle) {
-    const subjectField = document.getElementById('contact-subject');
-    const messageField = document.getElementById('contact-message');
-    const contactSection = document.getElementById('contact');
+    openEmailModal(
+      null,
+      `Inquiry: ${serviceTitle}`,
+      `Hi Ashish,\n\nI would like to discuss a project related to "${serviceTitle}". Please let me know your availability for a quick discovery call.\n\nBest regards,`
+    );
+  };
 
-    if (subjectField) {
-      subjectField.value = `Inquiry: ${serviceTitle}`;
-    }
+  // --- 9. In-Platform Direct Email Modal Logic ---
+  const emailModal = document.getElementById('email-modal');
+  const emailModalSubject = document.getElementById('email-modal-subject');
+  const emailModalBody = document.getElementById('email-modal-body');
 
-    if (messageField) {
-      messageField.value = `Hi Ashish,\n\nI would like to discuss a project related to "${serviceTitle}". Please let me know your availability for a quick discovery call.\n\nBest regards,`;
-    }
-
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+  window.openEmailModal = function (e, prefillSubject = '', prefillBody = '') {
+    if (e && e.preventDefault) e.preventDefault();
+    if (emailModal) {
+      if (emailModalSubject) emailModalSubject.value = prefillSubject;
+      if (emailModalBody) emailModalBody.value = prefillBody;
+      emailModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
       setTimeout(() => {
-        if (subjectField) subjectField.focus();
-      }, 700);
+        if (emailModalSubject && !prefillSubject) {
+          emailModalSubject.focus();
+        }
+      }, 150);
     }
   };
 
-  // --- 9. Email & Phone Copy to Clipboard ---
+  window.closeEmailModal = function () {
+    if (emailModal) {
+      emailModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.launchWebmail = function (provider) {
+    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
+    const subject = emailModalSubject ? emailModalSubject.value.trim() : '';
+    const body = emailModalBody ? emailModalBody.value.trim() : '';
+
+    let url = '';
+    if (provider === 'gmail') {
+      url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+      if (subject) url += `&su=${encodeURIComponent(subject)}`;
+      if (body) url += `&body=${encodeURIComponent(body)}`;
+    } else if (provider === 'outlook') {
+      url = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(email)}`;
+      if (subject) url += `&subject=${encodeURIComponent(subject)}`;
+      if (body) url += `&body=${encodeURIComponent(body)}`;
+    }
+
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      showToast(`Opening ${provider === 'gmail' ? 'Gmail Web' : 'Outlook.com'} in a new tab...`);
+      closeEmailModal();
+    }
+  };
+
+  window.launchDesktopMail = function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
+    const subject = emailModalSubject ? emailModalSubject.value.trim() : '';
+    const body = emailModalBody ? emailModalBody.value.trim() : '';
+    let mailto = `mailto:${email}`;
+    const params = [];
+    if (subject) params.push(`subject=${encodeURIComponent(subject)}`);
+    if (body) params.push(`body=${encodeURIComponent(body)}`);
+    if (params.length > 0) mailto += `?${params.join('&')}`;
+    window.location.href = mailto;
+    closeEmailModal();
+  };
+
+  window.copyEmailFromModal = function () {
+    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      const btn = document.getElementById('modal-copy-email-btn');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        btn.classList.remove('btn-outline-cyan');
+        btn.classList.add('btn-primary');
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.classList.add('btn-outline-cyan');
+          btn.classList.remove('btn-primary');
+        }, 2000);
+      }
+      showToast('Email address copied to clipboard!');
+    }).catch(() => {
+      showToast(`Email: ${email}`);
+    });
+  };
+
+  if (emailModal) {
+    emailModal.addEventListener('click', (e) => {
+      if (e.target === emailModal) {
+        closeEmailModal();
+      }
+    });
+  }
+
+  // --- 10. Email Copy to Clipboard ---
   const copyEmailBtn = document.getElementById('copy-email-btn');
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', function () {
-      const email = 'ashishagrwal307@gmail.com';
+      const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
         const originalText = copyEmailBtn.innerHTML;
         copyEmailBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
@@ -345,234 +425,10 @@ document.addEventListener('DOMContentLoaded', function () {
           copyEmailBtn.classList.remove('btn-primary');
         }, 2200);
       }).catch(() => {
-        showToast('Could not copy automatically. Email: ashishagrwal307@gmail.com');
+        showToast(`Could not copy automatically. Email: ${email}`);
       });
     });
   }
-
-  const copyPhoneBtn = document.getElementById('copy-phone-btn');
-  if (copyPhoneBtn) {
-    copyPhoneBtn.addEventListener('click', function () {
-      const phone = '9928903550';
-      navigator.clipboard.writeText(phone).then(() => {
-        const originalText = copyPhoneBtn.innerHTML;
-        copyPhoneBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied (9928903550)!';
-        copyPhoneBtn.classList.remove('btn-outline-cyan');
-        copyPhoneBtn.classList.add('btn-primary');
-
-        showToast('Phone number 9928903550 copied to clipboard!');
-
-        setTimeout(() => {
-          copyPhoneBtn.innerHTML = originalText;
-          copyPhoneBtn.classList.add('btn-outline-cyan');
-          copyPhoneBtn.classList.remove('btn-primary');
-        }, 2500);
-      }).catch(() => {
-        showToast('Contact number: +91 9928903550');
-      });
-    });
-  }
-
-  // --- 10. Contact Form Validation & Submission ---
-  const contactForm = document.getElementById('portfolio-contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-
-  if (contactForm) {
-    const nameInput = document.getElementById('contact-name');
-    const emailInput = document.getElementById('contact-email');
-    const subjectInput = document.getElementById('contact-subject');
-    const messageInput = document.getElementById('contact-message');
-
-    // Real-time input cleaner on typing
-    [nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
-      if (input) {
-        input.addEventListener('input', () => {
-          input.classList.remove('error');
-        });
-      }
-    });
-
-    contactForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      let isValid = true;
-
-      // Validate Name
-      if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
-        nameInput.classList.add('error');
-        isValid = false;
-      } else {
-        nameInput.classList.remove('error');
-      }
-
-      // Validate Email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
-        emailInput.classList.add('error');
-        isValid = false;
-      } else {
-        emailInput.classList.remove('error');
-      }
-
-      // Validate Subject
-      if (!subjectInput.value.trim() || subjectInput.value.trim().length < 3) {
-        subjectInput.classList.add('error');
-        isValid = false;
-      } else {
-        subjectInput.classList.remove('error');
-      }
-
-      // Validate Message
-      if (!messageInput.value.trim() || messageInput.value.trim().length < 10) {
-        messageInput.classList.add('error');
-        isValid = false;
-      } else {
-        messageInput.classList.remove('error');
-      }
-
-      if (!isValid) {
-        showToast('Please fix the highlighted fields before sending.');
-        return;
-      }
-
-      // Show Sending State
-      const originalBtnHtml = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending message...';
-
-      const payload = {
-        full_name: nameInput.value.trim(),
-        email: emailInput.value.trim(),
-        subject: subjectInput.value.trim(),
-        message: messageInput.value.trim()
-      };
-
-      // Determine API endpoint
-      let apiUrl = '/api/inquiries';
-      if (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.apiUrl) {
-        apiUrl = window.PORTFOLIO_CONFIG.apiUrl;
-      } else if (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '3000')) {
-        // If opened locally via file:// or Live Server (e.g. port 5500)
-        apiUrl = 'http://localhost:3000/api/inquiries';
-      }
-
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await response.json().catch(() => ({}));
-
-        if (response.ok && data.success) {
-          showToast(data.message || 'Message processed successfully!');
-          showFeedbackSuccessModal(payload.full_name, payload.email, data.delivery);
-          contactForm.reset();
-        } else {
-          const errorMsg = data.error || `Submission failed with status ${response.status}.`;
-          showToast(errorMsg);
-        }
-      } catch (networkErr) {
-        console.error('Contact Form Submission Error:', networkErr);
-        showToast('Unable to reach email server. Please run "npm start" (port 3000) or email ashishagrwal307@gmail.com.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
-      }
-    });
-  }
-
-  function showFeedbackSuccessModal(senderName, senderEmail, delivery) {
-    const successModal = document.getElementById('success-modal');
-    const modalIcon = document.getElementById('success-modal-icon');
-    const modalTitle = document.getElementById('success-modal-title');
-    const modalDesc = document.getElementById('success-modal-desc');
-    const modalActions = document.getElementById('success-modal-actions');
-
-    if (!successModal) return;
-
-    const isTestMode = Boolean(delivery && delivery.is_test_mode);
-
-    if (isTestMode) {
-      if (modalIcon) {
-        modalIcon.style.background = 'rgba(245, 158, 11, 0.15)';
-        modalIcon.style.borderColor = '#fbbf24';
-        modalIcon.style.color = '#fbbf24';
-        modalIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
-      }
-      if (modalTitle) {
-        modalTitle.textContent = 'Inquiry Recorded in Database!';
-      }
-      if (modalDesc) {
-        modalDesc.innerHTML = `
-          Thank you <strong>${senderName}</strong>! Your inquiry was safely captured and stored in your local database (<code style="color: #38bdf8;">db/inquiries.json</code>).
-          <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 12px; margin-top: 14px; text-align: left; font-size: 0.85rem; color: #fbbf24; line-height: 1.5;">
-            <strong>⚠️ Real Email Notice:</strong><br/>
-            Live email delivery is currently in <strong>Test Mode</strong> because your Google App Password is not yet added to <code style="color: #fff;">.env</code>.
-            To start receiving real emails in <strong>ashishagrwal307@gmail.com</strong> and delivering confirmation receipts to clients, configure your App Password below.
-          </div>
-        `;
-      }
-      if (modalActions) {
-        modalActions.innerHTML = `
-          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="/setup-smtp" target="_blank" class="btn btn-primary btn-sm">
-              <i class="fa-solid fa-key"></i> Connect App Password
-            </a>
-            <button type="button" onclick="closeSuccessModal();" class="btn btn-secondary btn-sm">
-              Dismiss
-            </button>
-          </div>
-        `;
-      }
-    } else {
-      if (modalIcon) {
-        modalIcon.style.background = 'rgba(16, 185, 129, 0.15)';
-        modalIcon.style.borderColor = 'var(--accent-emerald)';
-        modalIcon.style.color = 'var(--accent-emerald)';
-        modalIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
-      }
-      if (modalTitle) {
-        modalTitle.textContent = 'Message Sent Successfully!';
-      }
-      if (modalDesc) {
-        modalDesc.innerHTML = `
-          Thank you <strong style="color: #ffffff;">${senderName}</strong>! Your inquiry has been delivered directly to Ashish Agrawal (<strong>ashishagrwal307@gmail.com</strong>).
-          An automated confirmation email has also been sent to your email (<strong style="color: var(--accent-cyan);">${senderEmail}</strong>). Ashish will review your details and respond within 2–4 hours.
-        `;
-      }
-      if (modalActions) {
-        modalActions.innerHTML = `
-          <button type="button" onclick="closeSuccessModal();" class="btn btn-primary btn-sm" style="min-width: 140px;">
-            Got it!
-          </button>
-        `;
-      }
-    }
-
-    successModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  const successModalElem = document.getElementById('success-modal');
-  if (successModalElem) {
-    successModalElem.addEventListener('click', (e) => {
-      if (e.target === successModalElem) {
-        closeSuccessModal();
-      }
-    });
-  }
-
-  window.closeSuccessModal = function () {
-    const successModal = document.getElementById('success-modal');
-    if (successModal) {
-      successModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  };
 
   // --- 11. Toast System ---
   window.showToast = function (message) {
@@ -655,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') {
       closeProjectModal();
       closeResumeModal();
-      closeSuccessModal();
+      closeEmailModal();
     }
   });
 });

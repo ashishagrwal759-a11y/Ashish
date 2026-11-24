@@ -33,25 +33,27 @@ A modern, premium, fully responsive, and interactive personal portfolio website 
 ## 📁 Project Structure
 
 ```
-portfolio/
-├── index.html                 # Portfolio page
+d:\ashish portfolio\
+├── index.html                  # Semantic HTML5, SEO meta tags, OpenGraph, JSON-LD schema
+├── README.md                   # Full documentation & setup guide
 ├── css/
-│   └── style.css              # Site styles
+│   └── style.css               # Modern CSS3 design system, responsive grid & animations
 ├── js/
-│   ├── config.js              # Portfolio content and links
-│   ├── main.js                # Interactions and contact form
-│   └── particles.js           # Animated background
-├── assets/
-│   ├── docs/                  # Resume instructions and documents
-│   └── images/                # Profile, logo, favicon, and project artwork
-├── server.js                  # Express API and email delivery
-├── setup-smtp.html            # Local SMTP setup utility
-├── test-email.js              # Email workflow test script
-├── package.json               # Scripts and runtime dependencies
-├── package-lock.json          # Locked dependency versions
-├── .env.example               # SMTP configuration template
-├── start-server.bat           # Windows server launcher
-└── README.md                  # Setup, configuration, and deployment guide
+│   ├── config.js               # Centralized data file (Edit details, skills, projects here!)
+│   ├── particles.js            # Interactive starry canvas constellation background
+│   └── main.js                 # Smooth scroll, nav drawer, scrollspy, modal, form validation
+└── assets/
+    ├── docs/
+    │   └── README_RESUME.txt   # Guide for placing Ashish_Agrawal_Resume.pdf
+    └── images/
+        ├── logo.png            # 3D Gold & Silver Monogram "AA" Official Brand Logo
+        ├── avatar.svg          # Professional web developer & sales pro vector avatar
+        ├── favicon.svg         # Monogram AA high-res icon
+        ├── project-gogold.svg  # GoGold USA (gogoldusa.com) Full Custom WordPress Redesign mockup
+        ├── project-2.svg       # Shopify High-Converting Fashion Store mockup
+        ├── project-3.svg       # High-Converting Sales Landing Page & Lead Funnel mockup
+        ├── project-4.svg       # Shopify B2B Wholesale & Multi-Tier Store mockup
+        └── project-5.svg       # Custom WordPress Real Estate & Booking Portal mockup
 ```
 
 ---
@@ -88,71 +90,14 @@ Open `js/config.js` and modify the values in `PORTFOLIO_CONFIG`:
    ```
 4. The **"Resume"** and **"Download PDF Resume"** buttons on the site will automatically download your PDF!
 
-### 3. Automated Contact Form & Dual Email Delivery
-The contact form features end-to-end background submission without opening Outlook or any desktop mail application:
-- **Admin Notification**: Form details are captured and instantly delivered to `ashishagrwal307@gmail.com` with a styled executive report, client details, and direct `replyTo` capability.
-- **Client Confirmation**: The submitting client automatically receives a personalized HTML confirmation receipt ("Inquiry Received") confirming their details and setting expectations for a response within 2–4 business hours.
-- **Persistent Lead Storage**: All inquiries are permanently stored in `db/inquiries.json` with timestamp, client metadata, and delivery status.
-- **Universal Provider Compatibility**: Works seamlessly with Gmail, Outlook, Yahoo, SendGrid, Brevo, or any custom SMTP server.
-- **Zero-Setup Testing Mode**: If live SMTP credentials are not yet entered in `.env`, the server automatically creates an Ethereal test inbox and prints email preview URLs directly to the console!
-
-#### Starting the Email Backend Server:
-Choose any of these easy ways to run the server:
-
-- **Option A (Direct Node - Recommended)**:
-  ```bash
-  node server.js
-  ```
-- **Option B (Windows CMD / Bypass PowerShell Restriction)**:
-  ```bash
-  npm.cmd start
-  ```
-- **Option C (One-Click)**:
-  Double-click `start-server.bat` in the project folder.
-
-> **Tip for PowerShell Users:** If you see `PSSecurityException` when typing `npm`, run this once in PowerShell:
-> ```powershell
-> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-> ```
-
-The server will boot on `http://localhost:3000`. Inquiries submitted from the frontend will be processed automatically!
-
-#### Running the Automated Test Suite:
-```bash
-npm test
-```
-This tests server health, input validation, dual email generation (admin + client confirmation), and lead database persistence.
-
-#### Configuring Live SMTP Credentials (.env):
-Open `.env` to configure your email provider:
-
-- **Gmail (Recommended)**:
-  ```env
-  SMTP_HOST=smtp.gmail.com
-  SMTP_PORT=587
-  SMTP_SECURE=false
-  SMTP_USER=ashishagrwal307@gmail.com
-  SMTP_PASS=your_16_char_google_app_password
-  NOTIFICATION_RECIPIENT=ashishagrwal307@gmail.com
-  ```
-  *(To generate a 16-character App Password, visit: https://myaccount.google.com/apppasswords with 2FA enabled)*
-
-- **Outlook / Office 365**:
-  ```env
-  SMTP_HOST=smtp.office365.com
-  SMTP_PORT=587
-  SMTP_SECURE=false
-  SMTP_USER=your_email@outlook.com
-  SMTP_PASS=your_password
-  ```
-
-- **Yahoo Mail / Custom SMTP**:
-  ```env
-  SMTP_HOST=smtp.mail.yahoo.com
-  SMTP_PORT=587
-  SMTP_USER=your_email@yahoo.com
-  SMTP_PASS=your_yahoo_app_password
-  ```
+### 3. Direct Contact & Communication Channels
+The website provides direct, friction-free communication channels for clients and recruiters:
+- **Direct Phone Call**: Clickable `tel:9928903550` link allows mobile and desktop users to dial immediately (`+91 9928903550`).
+- **LinkedIn Profile**: Direct, clickable link to [Ashish Agrawal's LinkedIn](https://www.linkedin.com/in/ashishagrwal7014/) opening safely in a new browser tab.
+- **Direct Email**: Standard `mailto:ashishagrwal307@gmail.com` link enabling visitors to use their preferred email application (Gmail, Outlook, Apple Mail, etc.) without forced desktop client traps.
+- **One-Click Email Copy**: Integrated clipboard copy button allows browser webmail users (e.g. Gmail in Chrome) to copy `ashishagrwal307@gmail.com` with a single click.
+- **WhatsApp Direct**: Direct messaging link to start a WhatsApp conversation with Ashish instantly.
+- **Zero-Dependency Architecture**: Runs statically in any modern browser without requiring Node.js, npm, or external servers.
 
 ---
 

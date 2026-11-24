@@ -2,26 +2,23 @@
   "name": "ashish-portfolio",
   "version": "1.0.0",
   "description": "A modern, premium, fully responsive, and interactive personal portfolio website for **Ashish Agrawal**, presenting him as both a capable **Web Developer** and a results-driven **Sales Executive**.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "test": "node test-email.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashishagrwal759-a11y/Ashish-Agrwal.git"
+    "url": "git+https://github.com/ashishagrwal759-a11y/AshishAgrwal.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/ashishagrwal759-a11y/Ashish-Agrwal/issues"
+    "url": "https://github.com/ashishagrwal759-a11y/AshishAgrwal/issues"
   },
-  "homepage": "https://github.com/ashishagrwal759-a11y/Ashish-Agrwal#readme",
+  "homepage": "https://github.com/ashishagrwal759-a11y/AshishAgrwal#readme",
   "dependencies": {
-    "@vercel/speed-insights": "^2.1.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
     "express": "^5.3.0",

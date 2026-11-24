@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- cspell:words Ashish Agrawal Agrwal ashishagrwal webdev glassmorphism gogoldusa upsell wireframes -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -65,14 +64,6 @@
     ]
   }
   </script>
-
-  <!-- Vercel Speed Insights (enable Speed Insights for this project in Vercel) -->
-  <script>
-    window.si = window.si || function () {
-      (window.siq = window.siq || []).push(arguments);
-    };
-  </script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 
@@ -1091,155 +1082,112 @@
 
         <div class="contact-grid">
           
-          <!-- Left Column: Direct Info & Social Placeholders -->
+          <!-- Left Column: Direct Outreach & Quick Actions -->
           <div class="contact-info-panel">
             
             <div class="contact-highlight-box">
               <h3>Initiate a Conversation</h3>
               <p>
-                Feel free to call or WhatsApp me directly at <strong>+91 9928903550</strong>, or send an email. I respond promptly to discuss project scopes, timelines, and business opportunities.
+                Whether you have an upcoming web development project, need strategic sales guidance, or wish to explore full-time and contract roles, I welcome direct inquiries. Feel free to reach out via call, email, or LinkedIn.
               </p>
 
-              <!-- One-Click Copy Email Bar -->
+              <!-- Direct Call Action Button -->
+              <div style="margin-bottom: 1.25rem;">
+                <a href="tel:9928903550" class="btn btn-primary" style="width: 100%; justify-content: center;" title="Call Ashish at 9928903550">
+                  <i class="fa-solid fa-phone"></i> Call: 9928903550
+                </a>
+              </div>
+
+              <!-- One-Click Copy / Direct Email Bar -->
               <div class="email-copy-bar">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i class="fa-solid fa-envelope" style="color: var(--accent-cyan); font-size: 1.1rem;"></i>
-                  <span class="email-display-text" id="email-text">ashishagrwal307@gmail.com</span>
+                <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
+                  <i class="fa-solid fa-envelope" style="color: var(--accent-cyan); font-size: 1.1rem; flex-shrink: 0;"></i>
+                  <a href="javascript:void(0);" onclick="openEmailModal(event);" class="email-display-text" id="email-text" title="Click to email Ashish directly on the platform" style="text-decoration: none; cursor: pointer;">ashishagrwal307@gmail.com</a>
                 </div>
                 <button type="button" class="btn btn-outline-cyan btn-sm btn-copy-email" id="copy-email-btn" title="Copy email address to clipboard">
                   <i class="fa-regular fa-copy"></i> Copy
                 </button>
               </div>
-            </div>
 
-            <!-- Social Media Cards -->
-            <div class="social-links-list">
-              
-              <!-- LinkedIn -->
-              <a href="https://www.linkedin.com/in/ashishagrwal7014" target="_blank" rel="noopener noreferrer" class="social-card" title="Ashish Agrawal on LinkedIn">
-                <div class="social-icon-box" style="color: #0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div>
-                <div class="social-meta">
-                  <h5>LinkedIn</h5>
-                  <span>Professional Network</span>
+              <!-- Direct Availability Callout -->
+              <div style="padding: 1rem 1.2rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.28); border-radius: var(--radius-md); display: flex; align-items: center; gap: 0.85rem; margin-top: 1.25rem;">
+                <i class="fa-solid fa-clock" style="color: #10b981; font-size: 1.2rem; flex-shrink: 0;"></i>
+                <div style="font-size: 0.88rem; color: var(--text-light);">
+                  <strong>Fast Response Time:</strong> Prompt responses within 24 hours on business days.
                 </div>
-              </a>
-
-              <!-- GitHub -->
-              <a href="https://github.com/ashishagrawal-placeholder" target="_blank" rel="noopener noreferrer" class="social-card" title="Ashish Agrawal on GitHub (Placeholder Link)">
-                <div class="social-icon-box" style="color: #f8fafc;"><i class="fa-brands fa-github"></i></div>
-                <div class="social-meta">
-                  <h5>GitHub</h5>
-                  <span>Code Repositories</span>
-                </div>
-              </a>
-
-              <!-- WhatsApp -->
-              <a href="https://wa.me/919928903550?text=Hello%20Ashish,%20I%20am%20reaching%20out%20via%20your%20portfolio" target="_blank" rel="noopener noreferrer" class="social-card" title="Chat with Ashish on WhatsApp (+91 9928903550)">
-                <div class="social-icon-box" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
-                <div class="social-meta">
-                  <h5>WhatsApp</h5>
-                  <span>+91 9928903550</span>
-                </div>
-              </a>
-
-              <!-- Direct Phone Link -->
-              <a href="tel:+919928903550" class="social-card" title="Call Ashish at +91 9928903550">
-                <div class="social-icon-box" style="color: var(--accent-cyan);"><i class="fa-solid fa-phone"></i></div>
-                <div class="social-meta">
-                  <h5>Direct Call</h5>
-                  <span>+91 9928903550</span>
-                </div>
-              </a>
-
-              <!-- Direct Mail Link (Opens Web Gmail directly instead of Outlook) -->
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com" target="_blank" rel="noopener noreferrer" class="social-card" title="Open Gmail to email ashishagrwal307@gmail.com">
-                <div class="social-icon-box" style="color: #ea4335;"><i class="fa-solid fa-envelope"></i></div>
-                <div class="social-meta">
-                  <h5>Direct Email</h5>
-                  <span>ashishagrwal307@gmail.com</span>
-                </div>
-              </a>
-
-            </div>
-
-            <!-- Direct Availability Callout -->
-            <div style="padding: 1.2rem; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-md); display: flex; align-items: center; gap: 0.85rem;">
-              <i class="fa-solid fa-clock" style="color: #10b981; font-size: 1.2rem;"></i>
-              <div style="font-size: 0.88rem; color: var(--text-light);">
-                <strong>Fast Response Time:</strong> Typically responding within 24 hours on business days.
               </div>
             </div>
 
           </div>
 
-          <!-- Right Column: Direct Contact & Phone Showcase -->
-          <div class="contact-form-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;">
-                <div style="width: 54px; height: 54px; border-radius: 50%; background: rgba(0, 210, 255, 0.12); border: 1px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-cyan); flex-shrink: 0;">
-                  <i class="fa-solid fa-phone-volume"></i>
-                </div>
-                <div>
-                  <span class="badge-pill badge-cyan" style="font-size: 0.72rem; padding: 0.2rem 0.65rem; margin-bottom: 0.3rem;">Instant Communication</span>
-                  <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #ffffff; margin: 0;">
-                    Direct Phone &amp; WhatsApp
-                  </h3>
-                </div>
-              </div>
-
-              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.8rem;">
-                Looking to discuss a new website build, redesign, sales strategy, or a business collaboration? You can contact me directly on my personal number:
+          <!-- Right Column: Direct Channels & Verified Profiles -->
+          <div class="contact-channels-panel">
+            
+            <div class="contact-highlight-box">
+              <h3>Direct Channels &amp; Profiles</h3>
+              <p>
+                Connect directly using any of the verified channels below. All links open directly in your preferred application.
               </p>
 
-              <!-- Highlighted Phone Number Display Card -->
-              <div style="background: rgba(11, 15, 29, 0.75); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: var(--radius-lg); padding: 1.8rem 1.4rem; text-align: center; margin-bottom: 1.6rem; box-shadow: 0 8px 30px rgba(0, 210, 255, 0.08); position: relative;">
-                <div style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.6rem;">
-                  <i class="fa-solid fa-mobile-screen-button"></i> Primary Contact Number
-                </div>
+              <div class="social-links-list" style="grid-template-columns: 1fr;">
                 
-                <div style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.3rem); font-weight: 800; color: #ffffff; letter-spacing: 1px; margin-bottom: 1.4rem;">
-                  <a href="tel:+919928903550" style="color: #ffffff; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='#ffffff'">
-                    +91 9928903550
-                  </a>
+                <!-- Phone Number -->
+                <a href="tel:9928903550" class="social-card" title="Call Ashish at 9928903550">
+                  <div class="social-icon-box" style="color: var(--accent-cyan);"><i class="fa-solid fa-phone"></i></div>
+                  <div class="social-meta">
+                    <h5>Phone Number</h5>
+                    <span style="font-size: 0.95rem; font-weight: 600; color: var(--accent-cyan);">9928903550</span>
+                  </div>
+                </a>
+
+                <!-- LinkedIn Profile -->
+                <a href="https://www.linkedin.com/in/ashishagrwal7014/" target="_blank" rel="noopener noreferrer" class="social-card" title="Open Ashish Agrawal LinkedIn Profile">
+                  <div class="social-icon-box" style="color: #0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div>
+                  <div class="social-meta" style="min-width: 0; overflow: hidden;">
+                    <h5>LinkedIn Profile</h5>
+                    <span style="word-break: break-all; color: var(--accent-cyan);">https://www.linkedin.com/in/ashishagrwal7014/</span>
+                  </div>
+                </a>
+
+                <!-- Email Address -->
+                <a href="javascript:void(0);" onclick="openEmailModal(event);" class="social-card" title="Click to open email directly on the platform" style="cursor: pointer;">
+                  <div class="social-icon-box" style="color: #ea4335;"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="social-meta">
+                    <h5>Email Address</h5>
+                    <span>ashishagrwal307@gmail.com</span>
+                  </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919928903550?text=Hello%20Ashish,%20I%20am%20reaching%20out%20via%20your%20portfolio" target="_blank" rel="noopener noreferrer" class="social-card" title="Chat with Ashish on WhatsApp (+91 9928903550)">
+                  <div class="social-icon-box" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
+                  <div class="social-meta">
+                    <h5>WhatsApp</h5>
+                    <span>+91 9928903550</span>
+                  </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/ashishagrwal759-a11y" target="_blank" rel="noopener noreferrer" class="social-card" title="Ashish Agrawal on GitHub">
+                  <div class="social-icon-box" style="color: #f8fafc;"><i class="fa-brands fa-github"></i></div>
+                  <div class="social-meta">
+                    <h5>GitHub</h5>
+                    <span>github.com/ashishagrwal759-a11y</span>
+                  </div>
+                </a>
+
+                <!-- Location & Remote -->
+                <div class="social-card" style="cursor: default;">
+                  <div class="social-icon-box" style="color: #10b981;"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="social-meta">
+                    <h5>Location &amp; Remote</h5>
+                    <span>India &bull; Available Worldwide Remote</span>
+                  </div>
                 </div>
 
-                <!-- Call and WhatsApp Action Buttons -->
-                <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
-                  <a href="tel:+919928903550" class="btn btn-primary btn-lg" style="flex: 1; min-width: 160px; justify-content: center;">
-                    <i class="fa-solid fa-phone"></i> Call Now
-                  </a>
-                  <a href="https://wa.me/919928903550?text=Hello%20Ashish,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="flex: 1; min-width: 160px; justify-content: center; background: rgba(37, 211, 102, 0.15); border-color: rgba(37, 211, 102, 0.4); color: #25d366;">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                  </a>
-                </div>
-
-                <!-- Copy Number Button -->
-                <div style="margin-top: 1.2rem;">
-                  <button type="button" class="btn btn-outline-cyan btn-sm btn-copy-phone" id="copy-phone-btn" title="Copy 9928903550 to clipboard">
-                    <i class="fa-regular fa-copy"></i> Copy Number (9928903550)
-                  </button>
-                </div>
-              </div>
-
-              <!-- Quick Highlights -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.4rem;">
-                <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-md); padding: 0.9rem; text-align: center;">
-                  <i class="fa-solid fa-bolt" style="color: var(--accent-emerald); font-size: 1.1rem; margin-bottom: 0.3rem;"></i>
-                  <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff;">Quick Call Back</div>
-                  <div style="font-size: 0.76rem; color: var(--text-secondary);">Direct access to Ashish</div>
-                </div>
-                <div style="background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: var(--radius-md); padding: 0.9rem; text-align: center;">
-                  <i class="fa-solid fa-comments" style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 0.3rem;"></i>
-                  <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff;">WhatsApp Chat</div>
-                  <div style="font-size: 0.76rem; color: var(--text-secondary);">Share project files &amp; notes</div>
-                </div>
               </div>
             </div>
 
-            <div class="form-footer-note" style="margin-top: 0.5rem;">
-              <i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i> 
-              Available for Web Development, WordPress, UI/UX, and Business Strategy Inquiries.
-            </div>
           </div>
 
         </div>
@@ -1290,11 +1238,11 @@
           <ul class="footer-contact-items">
             <li>
               <i class="fa-solid fa-phone"></i>
-              <a href="tel:+919928903550" style="color: var(--accent-cyan); font-weight: 600;">+91 9928903550</a>
+              <a href="tel:9928903550" style="color: var(--accent-cyan);">9928903550</a>
             </li>
             <li>
               <i class="fa-solid fa-envelope"></i>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">ashishagrwal307@gmail.com</a>
+              <a href="javascript:void(0);" onclick="openEmailModal(event);" style="color: var(--accent-cyan); cursor: pointer;" title="Click to email Ashish directly on the platform">ashishagrwal307@gmail.com</a>
             </li>
             <li>
               <i class="fa-solid fa-location-dot"></i>
@@ -1307,13 +1255,13 @@
           </ul>
 
           <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-            <a href="https://www.linkedin.com/in/ashishagrwal7014" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="Ashish Agrawal on LinkedIn" style="width: 38px; height: 38px;">
+            <a href="https://www.linkedin.com/in/ashishagrwal7014/" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="LinkedIn" style="width: 38px; height: 38px;">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a href="https://github.com/ashishagrawal-placeholder" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="GitHub" style="width: 38px; height: 38px;">
+            <a href="https://github.com/ashishagrwal759-a11y" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="GitHub" style="width: 38px; height: 38px;">
               <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://wa.me/919928903550?text=Hello%20Ashish" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="WhatsApp (+91 9928903550)" style="width: 38px; height: 38px;">
+            <a href="https://wa.me/919928903550?text=Hello%20Ashish" target="_blank" rel="noopener noreferrer" class="back-to-top-btn" title="WhatsApp" style="width: 38px; height: 38px;">
               <i class="fa-brands fa-whatsapp"></i>
             </a>
           </div>
@@ -1394,30 +1342,74 @@
         <a href="assets/docs/Ashish_Agrawal_Resume.pdf" download="Ashish_Agrawal_Resume.pdf" class="btn btn-primary" style="flex: 1;" onclick="showToast('Attempting to download Ashish_Agrawal_Resume.pdf');">
           <i class="fa-solid fa-download"></i> Download PDF Resume
         </a>
-        <a href="#contact" onclick="closeResumeModal();" class="btn btn-secondary" style="flex: 1;">
+        <a href="javascript:void(0);" onclick="closeResumeModal(); openEmailModal(event, 'Request for Full CV', 'Hi Ashish,\n\nI reviewed your portfolio and would like to request your full CV / Resume.\n\nBest regards,');" class="btn btn-secondary" style="flex: 1;">
           <i class="fa-solid fa-envelope"></i> Request Full CV via Email
         </a>
       </div>
     </div>
   </div>
 
-  <!-- 3. Form Submission Success Modal -->
-  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true">
-    <div class="modal-container" style="max-width: 500px; text-align: center;">
-      <button class="modal-close-btn" id="success-close-btn" onclick="closeSuccessModal();" aria-label="Close Success Modal">
+  <!-- 3. In-Platform Direct Email Modal -->
+  <div class="modal-overlay" id="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
+    <div class="modal-container" style="max-width: 520px;">
+      <button class="modal-close-btn" id="email-close-btn" aria-label="Close Email Modal" onclick="closeEmailModal();">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div id="success-modal-icon" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-emerald); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--accent-emerald); margin-bottom: 1.2rem;">
-        <i class="fa-solid fa-check"></i>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 1.35rem;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(0, 210, 255, 0.12); border: 1px solid var(--accent-cyan); display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <h3 id="email-modal-title" style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-bottom: 0.35rem;">
+          Email Ashish Agrawal
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">
+          Connect directly within the browser without launching desktop Outlook.
+        </p>
       </div>
-      <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;" id="success-modal-title">Message Sent Successfully!</h3>
-      <div id="success-modal-desc" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
-        Thank you <span id="success-sender-name" style="color: var(--text-white); font-weight: 700;"></span>! Your inquiry has been delivered directly to Ashish Agrawal (<strong>ashishagrwal307@gmail.com</strong>). An automated confirmation email has also been sent to your email (<strong id="success-sender-email" style="color: var(--accent-cyan);"></strong>). Ashish will review your details and respond within 2–4 hours.
-      </div>
-      <div id="success-modal-actions">
-        <button type="button" onclick="closeSuccessModal();" class="btn btn-primary btn-sm" style="min-width: 140px;">
-          Got it!
+
+      <!-- Recipient Display Card -->
+      <div style="background: rgba(11, 15, 29, 0.75); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 0.85rem 1.1rem; margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">To:</span>
+          <span style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-cyan); font-weight: 600;">ashishagrwal307@gmail.com</span>
+        </div>
+        <button type="button" class="btn btn-outline-cyan btn-sm" id="modal-copy-email-btn" onclick="copyEmailFromModal();" style="padding: 0.3rem 0.75rem; font-size: 0.78rem;">
+          <i class="fa-regular fa-copy"></i> Copy
         </button>
+      </div>
+
+      <!-- Optional Subject & Body for Webmail -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <div>
+          <label for="email-modal-subject" style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.3rem;">
+            Subject (Optional):
+          </label>
+          <input type="text" id="email-modal-subject" class="form-control" placeholder="e.g. Website Redesign / Project Scope" style="padding: 0.6rem 0.85rem; font-size: 0.88rem; width: 100%; border-radius: var(--radius-sm); background: rgba(11,15,29,0.85); border: 1px solid var(--border-light); color: #fff;" />
+        </div>
+        <div>
+          <label for="email-modal-body" style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.3rem;">
+            Message (Optional):
+          </label>
+          <textarea id="email-modal-body" class="form-control" placeholder="Type brief notes about your project, goals, or role..." style="padding: 0.6rem 0.85rem; font-size: 0.88rem; width: 100%; min-height: 75px; border-radius: var(--radius-sm); background: rgba(11,15,29,0.85); border: 1px solid var(--border-light); color: #fff; resize: vertical;"></textarea>
+        </div>
+      </div>
+
+      <!-- Direct Webmail Actions -->
+      <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <button type="button" class="btn btn-primary" onclick="launchWebmail('gmail');" style="width: 100%; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1rem;">
+          <i class="fa-brands fa-google"></i> Open in Gmail (Web Browser)
+        </button>
+        <button type="button" class="btn btn-outline-cyan" onclick="launchWebmail('outlook');" style="width: 100%; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1rem;">
+          <i class="fa-brands fa-microsoft"></i> Open in Outlook.com (Web Browser)
+        </button>
+      </div>
+
+      <div style="margin-top: 0.85rem; text-align: center;">
+        <a href="mailto:ashishagrwal307@gmail.com" onclick="launchDesktopMail(event);" style="font-size: 0.76rem; color: var(--text-muted); text-decoration: underline;">
+          Or open with default desktop mail app
+        </a>
       </div>
     </div>
   </div>
