@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 8. Service / Project Inquiry Quick Connect ---
   window.prefillInquiry = function (serviceTitle) {
-    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
+    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal9829@gmail.com';
     const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(`Inquiry: ${serviceTitle}`)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     showToast(`Opening email for "${serviceTitle}"...`);
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const copyEmailBtn = document.getElementById('copy-email-btn');
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', function () {
-      const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
+      const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal9829@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
         const originalText = copyEmailBtn.innerHTML;
         copyEmailBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';

@@ -94,8 +94,8 @@ Open `js/config.js` and modify the values in `PORTFOLIO_CONFIG`:
 The website provides direct, friction-free communication channels for clients and recruiters:
 - **Direct Phone Call**: Clickable `tel:9928903550` link allows mobile and desktop users to dial immediately (`+91 9928903550`).
 - **LinkedIn Profile**: Direct, clickable link to [Ashish Agrawal's LinkedIn](https://www.linkedin.com/in/ashishagrwal7014/) opening safely in a new browser tab.
-- **Direct Email**: Standard `mailto:ashishagrwal307@gmail.com` link enabling visitors to use their preferred email application (Gmail, Outlook, Apple Mail, etc.) without forced desktop client traps.
-- **One-Click Email Copy**: Integrated clipboard copy button allows browser webmail users (e.g. Gmail in Chrome) to copy `ashishagrwal307@gmail.com` with a single click.
+- **Direct Email**: Direct email link (`ashishagrwal9829@gmail.com`) enabling visitors to reach you instantly with a single click.
+- **One-Click Email Copy**: Integrated clipboard copy button allows visitors to copy `ashishagrwal9829@gmail.com` with a single click.
 - **WhatsApp Direct**: Direct messaging link to start a WhatsApp conversation with Ashish instantly.
 - **Zero-Dependency Architecture**: Runs statically in any modern browser without requiring Node.js, npm, or external servers.
 
