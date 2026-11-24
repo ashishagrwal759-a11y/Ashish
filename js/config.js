@@ -53,7 +53,7 @@ const PORTFOLIO_CONFIG = {
       isPlaceholder: false,
       label: "Chat on WhatsApp"
     },
-    emailDirect: "mailto:ashishagrwal307@gmail.com"
+    emailDirect: "https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com"
   },
 
   // Verified Skills - Only skills Ashish knows as requested

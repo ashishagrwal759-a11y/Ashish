@@ -1102,7 +1102,7 @@
               <div class="email-copy-bar">
                 <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
                   <i class="fa-solid fa-envelope" style="color: var(--accent-cyan); font-size: 1.1rem; flex-shrink: 0;"></i>
-                  <a href="javascript:void(0);" onclick="openEmailModal(event);" class="email-display-text" id="email-text" title="Click to email Ashish directly on the platform" style="text-decoration: none; cursor: pointer;">ashishagrwal307@gmail.com</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com" target="_blank" rel="noopener noreferrer" class="email-display-text" id="email-text" title="Click to open email directly (ashishagrwal307@gmail.com)" style="text-decoration: none;">ashishagrwal307@gmail.com</a>
                 </div>
                 <button type="button" class="btn btn-outline-cyan btn-sm btn-copy-email" id="copy-email-btn" title="Copy email address to clipboard">
                   <i class="fa-regular fa-copy"></i> Copy
@@ -1150,7 +1150,7 @@
                 </a>
 
                 <!-- Email Address -->
-                <a href="javascript:void(0);" onclick="openEmailModal(event);" class="social-card" title="Click to open email directly on the platform" style="cursor: pointer;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com" target="_blank" rel="noopener noreferrer" class="social-card" title="Click to open email directly (ashishagrwal307@gmail.com)">
                   <div class="social-icon-box" style="color: #ea4335;"><i class="fa-solid fa-envelope"></i></div>
                   <div class="social-meta">
                     <h5>Email Address</h5>
@@ -1242,7 +1242,7 @@
             </li>
             <li>
               <i class="fa-solid fa-envelope"></i>
-              <a href="javascript:void(0);" onclick="openEmailModal(event);" style="color: var(--accent-cyan); cursor: pointer;" title="Click to email Ashish directly on the platform">ashishagrwal307@gmail.com</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);" title="Click to open email directly (ashishagrwal307@gmail.com)">ashishagrwal307@gmail.com</a>
             </li>
             <li>
               <i class="fa-solid fa-location-dot"></i>
@@ -1342,57 +1342,8 @@
         <a href="assets/docs/Ashish_Agrawal_Resume.pdf" download="Ashish_Agrawal_Resume.pdf" class="btn btn-primary" style="flex: 1;" onclick="showToast('Attempting to download Ashish_Agrawal_Resume.pdf');">
           <i class="fa-solid fa-download"></i> Download PDF Resume
         </a>
-        <a href="javascript:void(0);" onclick="closeResumeModal(); openEmailModal(event, 'Request for Full CV', 'Hi Ashish,\n\nI reviewed your portfolio and would like to request your full CV / Resume.\n\nBest regards,');" class="btn btn-secondary" style="flex: 1;">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ashishagrwal307@gmail.com&su=Request%20for%20Ashish%20Agrawal%20Full%20CV" target="_blank" rel="noopener noreferrer" onclick="closeResumeModal();" class="btn btn-secondary" style="flex: 1;">
           <i class="fa-solid fa-envelope"></i> Request Full CV via Email
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. In-Platform Direct Email Modal -->
-  <div class="modal-overlay" id="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
-    <div class="modal-container" style="max-width: 520px;">
-      <button class="modal-close-btn" id="email-close-btn" aria-label="Close Email Modal" onclick="closeEmailModal();">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      
-      <!-- Modal Header -->
-      <div style="text-align: center; margin-bottom: 1.35rem;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(0, 210, 255, 0.12); border: 1px solid var(--accent-cyan); display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-        <h3 id="email-modal-title" style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-bottom: 0.35rem;">
-          Email Ashish Agrawal
-        </h3>
-        <p style="color: var(--text-secondary); font-size: 0.88rem;">
-          Connect directly within the browser without launching desktop Outlook.
-        </p>
-      </div>
-
-      <!-- Recipient Display Card -->
-      <div style="background: rgba(11, 15, 29, 0.75); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 0.65rem;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">To:</span>
-          <span style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-cyan); font-weight: 600;">ashishagrwal307@gmail.com</span>
-        </div>
-        <button type="button" class="btn btn-outline-cyan btn-sm" id="modal-copy-email-btn" onclick="copyEmailFromModal();" style="padding: 0.3rem 0.75rem; font-size: 0.78rem;">
-          <i class="fa-regular fa-copy"></i> Copy
-        </button>
-      </div>
-
-      <!-- Direct Webmail Actions -->
-      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <button type="button" class="btn btn-primary" onclick="launchWebmail('gmail');" style="width: 100%; justify-content: center; font-size: 0.92rem; padding: 0.8rem 1.1rem;">
-          <i class="fa-brands fa-google"></i> Open in Gmail (Web Browser)
-        </button>
-        <button type="button" class="btn btn-outline-cyan" onclick="launchWebmail('outlook');" style="width: 100%; justify-content: center; font-size: 0.92rem; padding: 0.8rem 1.1rem;">
-          <i class="fa-brands fa-microsoft"></i> Open in Outlook.com (Web Browser)
-        </button>
-      </div>
-
-      <div style="margin-top: 0.85rem; text-align: center;">
-        <a href="mailto:ashishagrwal307@gmail.com" onclick="launchDesktopMail(event);" style="font-size: 0.76rem; color: var(--text-muted); text-decoration: underline;">
-          Or open with default desktop mail app
         </a>
       </div>
     </div>

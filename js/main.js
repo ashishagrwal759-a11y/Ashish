@@ -306,100 +306,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 8. Service / Project Inquiry Quick Connect ---
   window.prefillInquiry = function (serviceTitle) {
-    openEmailModal(
-      null,
-      `Inquiry: ${serviceTitle}`,
-      `Hi Ashish,\n\nI would like to discuss a project related to "${serviceTitle}". Please let me know your availability for a quick discovery call.\n\nBest regards,`
-    );
-  };
-
-  // --- 9. In-Platform Direct Email Modal Logic ---
-  const emailModal = document.getElementById('email-modal');
-  let currentPrefillSubject = '';
-  let currentPrefillBody = '';
-
-  window.openEmailModal = function (e, prefillSubject = '', prefillBody = '') {
-    if (e && e.preventDefault) e.preventDefault();
-    currentPrefillSubject = prefillSubject;
-    currentPrefillBody = prefillBody;
-    if (emailModal) {
-      emailModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeEmailModal = function () {
-    if (emailModal) {
-      emailModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.launchWebmail = function (provider) {
     const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
-    const subject = currentPrefillSubject ? currentPrefillSubject.trim() : '';
-    const body = currentPrefillBody ? currentPrefillBody.trim() : '';
-
-    let url = '';
-    if (provider === 'gmail') {
-      url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
-      if (subject) url += `&su=${encodeURIComponent(subject)}`;
-      if (body) url += `&body=${encodeURIComponent(body)}`;
-    } else if (provider === 'outlook') {
-      url = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(email)}`;
-      if (subject) url += `&subject=${encodeURIComponent(subject)}`;
-      if (body) url += `&body=${encodeURIComponent(body)}`;
-    }
-
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
-      showToast(`Opening ${provider === 'gmail' ? 'Gmail Web' : 'Outlook.com'} in a new tab...`);
-      closeEmailModal();
-    }
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(`Inquiry: ${serviceTitle}`)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    showToast(`Opening email for "${serviceTitle}"...`);
   };
 
-  window.launchDesktopMail = function (e) {
-    if (e && e.preventDefault) e.preventDefault();
-    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
-    let mailto = `mailto:${email}`;
-    if (currentPrefillSubject) {
-      mailto += `?subject=${encodeURIComponent(currentPrefillSubject)}`;
-      if (currentPrefillBody) mailto += `&body=${encodeURIComponent(currentPrefillBody)}`;
-    }
-    window.location.href = mailto;
-    closeEmailModal();
-  };
-
-  window.copyEmailFromModal = function () {
-    const email = (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.personal && window.PORTFOLIO_CONFIG.personal.email) || 'ashishagrwal307@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-      const btn = document.getElementById('modal-copy-email-btn');
-      if (btn) {
-        const orig = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-        btn.classList.remove('btn-outline-cyan');
-        btn.classList.add('btn-primary');
-        setTimeout(() => {
-          btn.innerHTML = orig;
-          btn.classList.add('btn-outline-cyan');
-          btn.classList.remove('btn-primary');
-        }, 2000);
-      }
-      showToast('Email address copied to clipboard!');
-    }).catch(() => {
-      showToast(`Email: ${email}`);
-    });
-  };
-
-  if (emailModal) {
-    emailModal.addEventListener('click', (e) => {
-      if (e.target === emailModal) {
-        closeEmailModal();
-      }
-    });
-  }
-
-  // --- 10. Email Copy to Clipboard ---
+  // --- 9. Email Copy to Clipboard ---
   const copyEmailBtn = document.getElementById('copy-email-btn');
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', function () {
@@ -423,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 11. Toast System ---
+  // --- 10. Toast System ---
   window.showToast = function (message) {
     const container = document.getElementById('toast-container');
     if (!container) return;
@@ -447,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3500);
   };
 
-  // --- 12. Reveal on Scroll (IntersectionObserver) ---
+  // --- 11. Reveal on Scroll (IntersectionObserver) ---
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   if (revealElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -462,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
     revealElements.forEach((el) => revealObserver.observe(el));
   }
 
-  // --- 13. Hero Visual Switcher (Photo vs Emblem) ---
+  // --- 12. Hero Visual Switcher (Photo vs Emblem) ---
   const visualSwitchBtn = document.getElementById('visual-switch-btn');
   const heroDisplayImg = document.getElementById('hero-display-img');
   const heroAvatarWrapper = document.getElementById('hero-avatar-wrapper');
@@ -504,7 +417,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') {
       closeProjectModal();
       closeResumeModal();
-      closeEmailModal();
     }
   });
 });
